@@ -1,6 +1,7 @@
 import React from 'react';
 import { studioInfo, teamMembersData } from '../../data/siteData';
 import { SectionHeader } from '../common/SectionHeader';
+import { getAssetUrl } from '../../utils/assetUrl';
 import styles from './TeamGrid.module.css';
 
 export const TeamGrid: React.FC = () => {
@@ -18,7 +19,7 @@ export const TeamGrid: React.FC = () => {
         {/* Large Team Hero Photograph matching reference */}
         <div className={styles.imageCard}>
           <img
-            src="/images/team.jpg"
+            src={getAssetUrl('images/team.jpg')}
             alt="Jagdish Narigara architectural studio multidisciplinary design team"
             className={styles.teamImage}
             loading="lazy"

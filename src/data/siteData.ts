@@ -8,6 +8,7 @@ import {
   SocialLink,
   StudioInfo
 } from '../types';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export const studioInfo: StudioInfo = {
   name: 'Jagdish Narigara',
@@ -138,7 +139,7 @@ export const projectsData: ProjectItem[] = [
     category: 'Interior Architecture',
     year: '2025',
     location: 'Metropolitan Tower',
-    imageSrc: '/images/project-1.jpg',
+    imageSrc: getAssetUrl('images/project-1.jpg'),
   },
   {
     id: 'proj-2',
@@ -146,7 +147,7 @@ export const projectsData: ProjectItem[] = [
     category: 'Residential Architecture',
     year: '2024',
     location: 'Hillside Reserve',
-    imageSrc: '/images/project-2.jpg',
+    imageSrc: getAssetUrl('images/project-2.jpg'),
   },
   {
     id: 'proj-3',
@@ -154,7 +155,7 @@ export const projectsData: ProjectItem[] = [
     category: 'Private Residence',
     year: '2024',
     location: 'Coastal Escarpment',
-    imageSrc: '/images/project-3.jpg',
+    imageSrc: getAssetUrl('images/project-3.jpg'),
   },
   {
     id: 'proj-4',
@@ -162,7 +163,7 @@ export const projectsData: ProjectItem[] = [
     category: 'Cultural Space',
     year: '2023',
     location: 'Civic Cultural Center',
-    imageSrc: '/images/project-4.jpg',
+    imageSrc: getAssetUrl('images/project-4.jpg'),
   },
   {
     id: 'proj-5',
@@ -170,7 +171,7 @@ export const projectsData: ProjectItem[] = [
     category: 'Bespoke Interior',
     year: '2023',
     location: 'Urban Sanctuary',
-    imageSrc: '/images/project-5.jpg',
+    imageSrc: getAssetUrl('images/project-5.jpg'),
   },
   {
     id: 'proj-6',
@@ -178,7 +179,7 @@ export const projectsData: ProjectItem[] = [
     category: 'Sustainable Architecture',
     year: '2022',
     location: 'Lakeside Ridge',
-    imageSrc: '/images/project-6.jpg',
+    imageSrc: getAssetUrl('images/project-6.jpg'),
   },
 ];
 

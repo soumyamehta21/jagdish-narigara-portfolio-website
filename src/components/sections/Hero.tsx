@@ -1,6 +1,7 @@
 import React from 'react';
 import { studioInfo } from '../../data/siteData';
 import { Button } from '../common/Button';
+import { getAssetUrl } from '../../utils/assetUrl';
 import styles from './Hero.module.css';
 
 export const Hero: React.FC = () => {
@@ -9,7 +10,7 @@ export const Hero: React.FC = () => {
       {/* Background Architectural Atmosphere */}
       <div className={styles.mediaBackground}>
         <img
-          src="/images/hero.jpg"
+          src={getAssetUrl('images/hero.jpg')}
           alt="Atmospheric modern luxury villa residence at dusk"
           className={styles.heroImage}
           loading="eager"

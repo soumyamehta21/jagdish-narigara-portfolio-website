@@ -1,5 +1,6 @@
 import React from 'react';
 import { studioInfo } from '../../data/siteData';
+import { getAssetUrl } from '../../utils/assetUrl';
 import styles from './Philosophy.module.css';
 
 export const Philosophy: React.FC = () => {
@@ -9,7 +10,7 @@ export const Philosophy: React.FC = () => {
         <div className={styles.blueprintCol}>
           <div className={styles.blueprintCard}>
             <img
-              src="/images/architectural-plan.svg"
+              src={getAssetUrl('images/architectural-plan.svg')}
               alt="Detailed architectural blueprint floor plan diagram"
               className={styles.blueprintImg}
               loading="lazy"

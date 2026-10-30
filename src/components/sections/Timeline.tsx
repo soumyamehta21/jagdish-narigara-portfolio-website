@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { milestonesData, studioInfo } from '../../data/siteData';
+import { getAssetUrl } from '../../utils/assetUrl';
 import styles from './Timeline.module.css';
 
 export const Timeline: React.FC = () => {
@@ -44,7 +45,7 @@ export const Timeline: React.FC = () => {
           <div className={styles.founderImgCol}>
             <div className={styles.founderImgCard}>
               <img
-                src="/images/founder.jpg"
+                src={getAssetUrl('images/founder.jpg')}
                 alt={`${studioInfo.founderName} - ${studioInfo.founderTitle}`}
                 className={styles.founderPhoto}
                 loading="lazy"
