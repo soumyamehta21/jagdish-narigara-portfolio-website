@@ -1,0 +1,138 @@
+.footerSection {
+  background-color: var(--color-bg-primary);
+  width: 100%;
+  padding-top: clamp(4rem, 6vw, 5.5rem);
+  padding-bottom: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-section-x);
+}
+
+.footerGrid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding-bottom: 3.5rem;
+}
+
+.mainCol {
+  flex: 1 1 420px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brandTitle {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.contactLine {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.contactLabel {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: var(--font-weight-medium);
+}
+
+.contactLink {
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.contactLink:hover {
+  color: var(--color-text-primary);
+}
+
+.ctaWrapper {
+  margin-top: 0.5rem;
+}
+
+.linksCol {
+  flex: 0 1 180px;
+  display: flex;
+  flex-direction: column;
+}
+
+.linksHeading {
+  font-size: 1.15rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.linksList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footerLink {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.footerLink:hover {
+  color: var(--color-text-primary);
+  transform: translateX(3px);
+}
+
+.copyrightRow {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.copyrightText {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 860px) {
+  .footerGrid {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .mainCol,
+  .linksCol {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .linksList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+}
