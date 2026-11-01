@@ -28,7 +28,7 @@ export const Timeline: React.FC = () => {
   }, []);
 
   return (
-    <section className={styles.journeySection} aria-label="Founder and Studio Journey">
+    <section className={styles.journeySection} aria-label="Jagdish Narigara Journey and Milestones">
       <div className={styles.container}>
         {/* Founder Bio Header Row */}
         <div className={styles.founderRow}>
@@ -53,7 +53,7 @@ export const Timeline: React.FC = () => {
                 height="600"
               />
               <div className={styles.founderBadgeOverlay}>
-                <span>Since Mar 2022</span>
+                <span>Independent Practice • Est. 2022</span>
               </div>
             </div>
           </div>

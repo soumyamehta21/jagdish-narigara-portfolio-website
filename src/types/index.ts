@@ -48,6 +48,22 @@ export interface MilestoneItem {
   tags?: string[];
 }
 
+export interface AwardItem {
+  id: string;
+  year: string;
+  title: string;
+  category: string;
+  project: string;
+  description: string;
+}
+
+export interface SoloAdvantage {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+}
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -82,6 +98,9 @@ export interface StudioInfo {
   founderName: string;
   founderTitle: string;
   quote: string;
+  awardsEyebrow?: string;
+  awardsHeading?: string;
+  awardsSubtext?: string;
   teamEyebrow: string;
   teamHeading: string;
   teamSubtext: string;

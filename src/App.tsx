@@ -8,7 +8,7 @@ import { Philosophy } from './components/sections/Philosophy';
 import { ProjectsGallery } from './components/sections/ProjectsGallery';
 import { Timeline } from './components/sections/Timeline';
 import { QuoteBand } from './components/sections/QuoteBand';
-import { TeamGrid } from './components/sections/TeamGrid';
+import { AwardsSection } from './components/sections/AwardsSection';
 import { Marquee } from './components/sections/Marquee';
 import { Footer } from './components/sections/Footer';
 
@@ -44,8 +44,8 @@ export const App: React.FC = () => {
         {/* Section 8: Pull Quote Band */}
         <QuoteBand />
 
-        {/* Section 9: Studio Team Showcase */}
-        <TeamGrid />
+        {/* Section 9: Awards, Honors & Independent Practice Advantage */}
+        <AwardsSection />
 
         {/* Section 10: Infinite Scrolling Marquee Strip */}
         <Marquee />

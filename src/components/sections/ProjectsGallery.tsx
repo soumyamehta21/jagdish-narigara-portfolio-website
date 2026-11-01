@@ -86,9 +86,9 @@ export const ProjectsGallery: React.FC = () => {
         {/* Header with Navigation Controls */}
         <div className={styles.headerWrapper}>
           <SectionHeader
-            eyebrow="Our Projects"
-            heading={<>The Proof is in <br />Our Portfolio</>}
-            description="Explore our curated portfolio of bespoke interior transformations, custom living environments, and photorealistic 3D visualizations."
+            eyebrow="Portfolio Showcase"
+            heading={<>The Proof is in <br />The Portfolio</>}
+            description="Explore a curated portfolio of bespoke interior transformations, custom living environments, and photorealistic 3D visualizations."
             layout="split"
           />
 

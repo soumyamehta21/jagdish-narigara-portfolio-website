@@ -29,7 +29,7 @@ export const Philosophy: React.FC = () => {
                 <Sparkles size={18} />
               </div>
               <div className={styles.badgeInfo}>
-                <span className={styles.badgeTag}>Bespoke Interior Studio</span>
+                <span className={styles.badgeTag}>Independent Practice</span>
                 <span className={styles.badgeDetail}>Spatial Harmony &amp; 3D Precision</span>
               </div>
             </div>
@@ -38,13 +38,13 @@ export const Philosophy: React.FC = () => {
 
         {/* Content Column: Interior Design Narrative & Pillars */}
         <div className={styles.contentCol}>
-          <span className={styles.eyebrow}>About Our Studio</span>
+          <span className={styles.eyebrow}>The Independent Approach</span>
           <h2 className={styles.heading}>Crafting Interiors That Harmonize Elegance &amp; Ergonomics</h2>
 
           <div className={styles.narrative}>
             <p className={styles.leadPara}>
-              At {studioInfo.name}, we believe exceptional living environments are born where functional ergonomics,
-              tactile materiality, and flattering illumination converge in effortless balance.
+              As an independent interior designer and visualizer, I believe exceptional living environments
+              are born where functional ergonomics, tactile materiality, and flattering illumination converge in effortless balance.
             </p>
             <p className={styles.bodyPara}>
               {studioInfo.philosophyBody}

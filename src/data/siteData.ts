@@ -4,6 +4,8 @@ import {
   ProcessStep,
   ProjectItem,
   MilestoneItem,
+  AwardItem,
+  SoloAdvantage,
   TeamMember,
   NavLink,
   SocialLink,
@@ -17,18 +19,21 @@ export const studioInfo: StudioInfo = {
   statusBadge: 'Open to Projects',
   headline: 'Bespoke spaces designed with precision & timeless artistry.',
   headlineSub: 'Transforming spaces into timeless, functional, and visually breathtaking interiors through precision space planning, technical drafting, and hyper-realistic 3D visualization.',
-  statementWords: ['WE DESIGN', 'INTERIORS', 'YOU CHERISH'],
-  philosophyTitle: 'Our Design Philosophy',
-  philosophyBody: "At Jagdish Narigara Interior Studio, we believe great interiors seamlessly balance functional ergonomics with visual elegance. Every space is approached with meticulous care — from initial spatial planning and detailed drafting to photorealistic 3D visualization and lighting orchestration. We transform residential and commercial interiors into curated environments tailored to reflect individual lifestyles and aspirations. We don't just furnish spaces — we choreograph experiences that inspire and endure.",
+  statementWords: ['BESPOKE', 'INTERIORS', 'YOU CHERISH'],
+  philosophyTitle: 'Design Philosophy',
+  philosophyBody: "As an independent interior designer and 3D visualizer, I believe exceptional living environments seamlessly balance functional ergonomics with visual elegance. Every space is approached with personal dedication — from initial spatial planning and millimeter-accurate drafting to photorealistic 3D visualization and lighting orchestration. I transform residential and commercial interiors into curated spaces tailored to reflect individual lifestyles and aspirations. I don't just furnish spaces — I choreograph environments that inspire and endure.",
   founderEyebrow: 'My Journey',
   founderHeading: 'From Classroom to Landmark Projects',
-  founderIntro: 'Jagdish Narigara began his interior design journey in 2022 with a deep passion for spaces that feel personal and purposeful. In just a few years — from the classroom to real-world projects — he has delivered premium residences, bungalows, hospitals, and commercial workspaces across Ahmedabad. His practice is built on precision technical drafting, photorealistic 3D visualization, and a commitment to getting every detail right before a single nail is driven.',
+  founderIntro: 'Jagdish Narigara is an independent interior designer and 3D visualizer based in Ahmedabad. Beginning his formal journey in 2022, he has rapidly built a strong practice delivering bespoke residences, luxury penthouses, hospitals, and commercial workspaces. Working independently allows him to provide undivided personal attention to every project, mastering both millimeter-accurate 2D technical drawings and photorealistic 3D visualization to ensure seamless execution on site.',
   founderName: 'Jagdish Narigara',
-  founderTitle: 'Founder & Principal Interior Designer',
+  founderTitle: 'Independent Interior Designer & 3D Visualizer',
   quote: '"An interior is the natural projection of the soul. When space, light, and materiality converge in harmony, everyday living is elevated into an art form."',
-  teamEyebrow: 'Our Studio',
-  teamHeading: 'The Skill & Soul Behind Every Interior',
-  teamSubtext: 'Meet the talented interior designers, 3D visualizers, space planners, and technical drafters who bring extraordinary spaces to life.',
+  awardsEyebrow: 'Recognition & Distinctions',
+  awardsHeading: 'Project Citations & Industry Honors',
+  awardsSubtext: 'A documented track record of precision, technical excellence, and trusted delivery across high-end residences, healthcare, and commercial spaces.',
+  teamEyebrow: 'Recognition & Distinctions',
+  teamHeading: 'Project Citations & Industry Honors',
+  teamSubtext: 'A documented track record of precision, technical excellence, and trusted delivery across high-end residences, healthcare, and commercial spaces.',
   phone: '+91 87006 55257',
   email: 'contact@jagdishnarigara.com',
   address: 'Main Avenue, Design District, New Delhi, India',
@@ -43,7 +48,8 @@ export const navLinks: NavLink[] = [
   { id: 'nav-process', label: 'Process', href: '#process' },
   { id: 'nav-service', label: 'Services', href: '#service' },
   { id: 'nav-about', label: 'About', href: '#abt' },
-  { id: 'nav-project', label: 'Our work', href: '#project' },
+  { id: 'nav-project', label: 'Portfolio', href: '#project' },
+  { id: 'nav-awards', label: 'Recognition', href: '#recognition' },
 ];
 
 export const statsData: StatItem[] = [
@@ -84,7 +90,7 @@ export const processStepsData: ProcessStep[] = [
     phase: 'Phase 01',
     title: 'Space Planning & Ergonomics',
     summary: 'Analyzing natural light, circulation flow, and functional zoning to create purposeful layouts.',
-    description: 'Every project begins with a deep analysis of spatial geometry, lifestyle requirements, and circulation corridors. We produce strategic zoning diagrams and multiple layout options to ensure maximum ergonomics and comfort.',
+    description: 'Every project begins with a deep analysis of spatial geometry, lifestyle requirements, and circulation corridors. I produce strategic zoning diagrams and multiple layout options to ensure maximum ergonomics and comfort.',
     deliverables: ['Circulation & Flow Diagrams', 'Functional Zoning Plans', 'Ergonomic Furniture Layouts'],
     benefit: 'Unlocks the maximum potential of every square foot with effortless movement and comfort.',
     iconName: 'LayoutGrid'
@@ -95,7 +101,7 @@ export const processStepsData: ProcessStep[] = [
     phase: 'Phase 02',
     title: '2D Drafting & Interior Elevations',
     summary: 'Meticulously dimensioned CAD layouts, reflected ceiling plans, and millwork elevations.',
-    description: 'We translate approved spatial concepts into millimeter-accurate technical drawings. From reflected ceiling lighting plans to joinery sections and interior wall elevations, our drawings leave zero ambiguity for contractors.',
+    description: 'I translate approved spatial concepts into millimeter-accurate technical drawings. From reflected ceiling lighting plans to joinery sections and interior wall elevations, the drawings leave zero ambiguity for contractors.',
     deliverables: ['Dimensioned Floor Plans', 'Ceiling & Lighting (RCP) Plans', 'Detailed Wall & Millwork Elevations'],
     benefit: 'Guarantees foolproof construction, prevents costly site errors, and speeds up execution.',
     iconName: 'PenTool'
@@ -106,7 +112,7 @@ export const processStepsData: ProcessStep[] = [
     phase: 'Phase 03',
     title: '3D Interior Modeling',
     summary: 'Building true-to-scale 3D digital environments with custom cabinetry and curated furniture.',
-    description: 'We construct exact 3D digital replicas of your spaces. Custom wardrobes, media consoles, false ceiling profiles, and bespoke furniture pieces are modeled in volumetric precision before textures are applied.',
+    description: 'I construct exact 3D digital replicas of your spaces. Custom wardrobes, media consoles, false ceiling profiles, and bespoke furniture pieces are modeled in volumetric precision before textures are applied.',
     deliverables: ['True-to-Scale 3D Wireframes', 'Bespoke Cabinetry & Joinery 3D', 'Spatial Proportions Review'],
     benefit: 'Enables you to see depth, scale, and volume in three dimensions before finalizing finishes.',
     iconName: 'Box'
@@ -117,7 +123,7 @@ export const processStepsData: ProcessStep[] = [
     phase: 'Phase 04',
     title: 'Photorealistic Renderings & 3D Walkthroughs',
     summary: 'Cinematic lighting simulations, luxury material textures, and immersive virtual tours.',
-    description: 'Using advanced ray-traced rendering engines, we simulate exact lighting temperatures, daylight casts, marble veining, and fabric sheen. Cinematic animated walkthroughs let you experience the ambience firsthand.',
+    description: 'Using advanced ray-traced rendering engines, I simulate exact lighting temperatures, daylight casts, marble veining, and fabric sheen. Cinematic animated walkthroughs let you experience the ambience firsthand.',
     deliverables: ['4K Ultra-HD 3D Renders', 'Cinematic 3D Video Walkthroughs', 'Day & Night Lighting Scenarios'],
     benefit: 'Complete visual certainty of the finished interior before investing in materials and procurement.',
     iconName: 'Sparkles'
@@ -284,12 +290,86 @@ export const milestonesData: MilestoneItem[] = [
   },
 ];
 
+export const awardsData: AwardItem[] = [
+  {
+    id: 'award-1',
+    year: '2026',
+    category: 'Commercial & Healthcare Interior',
+    title: 'Healthcare Architecture & Planning Distinction',
+    project: 'Blissmother & Auromax Hospitals',
+    description: 'Recognized for clinical workflow ergonomics, soothing patient-centric aesthetics, and sterile space compliance.'
+  },
+  {
+    id: 'award-2',
+    year: '2026',
+    category: 'Bespoke Residential Architecture',
+    title: 'Excellence in Luxury Bungalow Spatial Design',
+    project: 'The Aviraat Bungalows, Hastinapur & Shilp Residency',
+    description: 'Honored for tailored millwork detailing, expansive spatial flow, and harmonized interior materiality.'
+  },
+  {
+    id: 'award-3',
+    year: '2025',
+    category: 'High-Rise & Penthouse Living',
+    title: 'Penthouse 3D Visualization & Interior Feature',
+    project: 'Times 104, Shallgram Penthouse & Skyros',
+    description: 'Celebrated for ray-traced lighting realism, high-altitude spatial framing, and bespoke living room compositions.'
+  },
+  {
+    id: 'award-4',
+    year: '2024',
+    category: 'Independent Practice Milestone',
+    title: 'Emerging Independent Designer Commission',
+    project: 'The Klimana & Solo Private Residences',
+    description: 'Marked the successful launch of solo freelance practice, earning client praise for direct collaboration and zero site errors.'
+  },
+  {
+    id: 'award-5',
+    year: '2023',
+    category: 'Firm Practice Merit',
+    title: 'Site Detailing & Technical Coordination Honor',
+    project: 'The North, Aasopalav Bungalows & Ocean Park',
+    description: 'Acknowledged during professional firm practice for flawless contractor drawings and on-site millimeter joinery supervision.'
+  },
+  {
+    id: 'award-6',
+    year: '2022',
+    category: 'Design Foundation',
+    title: 'Top Academic Distinction in Space Planning',
+    project: 'Interior Design Foundation Academy',
+    description: 'Awarded top academic ranking in interior ergonomics, material curation, and precision CAD drafting.'
+  }
+];
+
+export const soloAdvantagesData: SoloAdvantage[] = [
+  {
+    id: 'adv-1',
+    number: '01',
+    title: 'Direct 1-on-1 Collaboration',
+    description: 'You work directly with Jagdish from concept sketch to site handover. No account managers, no junior handoffs, and zero lost-in-translation details.'
+  },
+  {
+    id: 'adv-2',
+    number: '02',
+    title: 'Dual Technical & Visual Mastery',
+    description: 'One designer controls both the millimeter-exact 2D technical drawings and the photorealistic 3D visualization, guaranteeing total aesthetic consistency.'
+  },
+  {
+    id: 'adv-3',
+    number: '03',
+    title: 'Contractor-Ready Precision',
+    description: 'Every reflected ceiling plan, joinery cross-section, and elevation is drafted to construction standards, eliminating costly misunderstandings on site.'
+  },
+  {
+    id: 'adv-4',
+    number: '04',
+    title: 'Agile Turnarounds & Total Ownership',
+    description: 'Fast design iterations and responsive communication. Every detail of your space receives the personal dedication of an independent craftsman.'
+  }
+];
+
 export const teamMembersData: TeamMember[] = [
-  { id: 'team-1', name: 'Jagdish Narigara', role: 'Principal Interior Designer & Founder', specialty: 'Interior Vision & Space Planning' },
-  { id: 'team-2', name: 'Aarav Mehta', role: 'Senior 3D Visualizer & Rendering Lead', specialty: 'Photorealistic Rendering & Walkthroughs' },
-  { id: 'team-3', name: 'Simran Roy', role: 'Senior Space Planning Specialist', specialty: 'Ergonomic Layouts & Interior Flow' },
-  { id: 'team-4', name: 'Rohan Verma', role: 'Lead Technical Drafter', specialty: '2D CAD Drafting & Interior Elevations' },
-  { id: 'team-5', name: 'Elena Chen', role: 'Lighting & Ceiling Consultant', specialty: 'Reflected Ceiling Plans & Ambiance' }
+  { id: 'team-1', name: 'Jagdish Narigara', role: 'Independent Interior Designer & 3D Visualizer', specialty: 'Spatial Planning & Photorealistic 3D Visualization' }
 ];
 
 export const socialLinks: SocialLink[] = [

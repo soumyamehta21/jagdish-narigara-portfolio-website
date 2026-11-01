@@ -34,8 +34,8 @@ export const Hero: React.FC = () => {
         <div className={styles.heroContent}>
           <div className={styles.headlineCol}>
             <h1 className={styles.headline}>
-              We blend art &amp; science to create <br className={styles.desktopBr} />
-              extraordinary interiors.
+              Blending spatial art &amp; technical <br className={styles.desktopBr} />
+              precision to shape extraordinary interiors.
             </h1>
           </div>
 
@@ -49,9 +49,9 @@ export const Hero: React.FC = () => {
                 target="_blank"
                 variant="outline"
                 iconType="arrow-right"
-                ariaLabel="Enquire via WhatsApp"
+                ariaLabel="Get in touch via WhatsApp"
               >
-                Enquiry us
+                Let's Connect
               </Button>
             </div>
           </div>

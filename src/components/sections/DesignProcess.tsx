@@ -26,14 +26,14 @@ export const DesignProcess: React.FC = () => {
   const ActiveIcon = iconMap[activeStep.iconName] || LayoutGrid;
 
   return (
-    <section id="process" className={styles.processSection} aria-label="Our Interior Design Process">
+    <section id="process" className={styles.processSection} aria-label="Interior Design Process & Methodology">
       <div className={styles.ambientGlow} aria-hidden="true" />
 
       <div className={styles.container}>
         {/* Section Header */}
         <div className={styles.header}>
           <div className={styles.badgeWrapper}>
-            <span className={styles.badge}>Our Methodology</span>
+            <span className={styles.badge}>Design Methodology</span>
           </div>
           <h2 className={styles.heading}>
             From Spatial Concept to <span className={styles.highlightText}>Immersive Reality</span>
