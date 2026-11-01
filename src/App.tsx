@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
 import { StatementBand } from './components/sections/StatementBand';
-import { StatsRow } from './components/sections/StatsRow';
+import { DesignProcess } from './components/sections/DesignProcess';
 import { ServicesGrid } from './components/sections/ServicesGrid';
 import { Philosophy } from './components/sections/Philosophy';
 import { ProjectsGallery } from './components/sections/ProjectsGallery';
@@ -26,13 +26,13 @@ export const App: React.FC = () => {
         {/* Section 2: Oversized Statement Band */}
         <StatementBand />
 
-        {/* Section 3: Stats Row */}
-        <StatsRow />
+        {/* Section 3: Interactive Design Process & Methodology */}
+        <DesignProcess />
 
-        {/* Section 4: Services 9-Card Grid */}
+        {/* Section 4: Specialized Services Grid (7 Core Services) */}
         <ServicesGrid />
 
-        {/* Section 5: Philosophy Inverted Blueprint Section */}
+        {/* Section 5: Interior Space Planning & Philosophy */}
         <Philosophy />
 
         {/* Section 6: Projects Portfolio Horizontal Gallery */}

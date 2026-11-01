@@ -6,21 +6,21 @@ import styles from './TeamGrid.module.css';
 
 export const TeamGrid: React.FC = () => {
   return (
-    <section className={styles.teamSection} aria-label="Our Architecture & Interior Design Team">
+    <section className={styles.teamSection} aria-label="Our Interior Design & Visualization Team">
       <div className={styles.container}>
         {/* Section Header */}
         <SectionHeader
           eyebrow={studioInfo.teamEyebrow}
-          heading={<>The Skill &amp; Soul <br className={styles.desktopBr} />Behind Our Projects</>}
+          heading={<>The Skill &amp; Soul <br className={styles.desktopBr} />Behind Every Space</>}
           description={studioInfo.teamSubtext}
           layout="split"
         />
 
-        {/* Large Team Hero Photograph matching reference */}
+        {/* Large Team Hero Photograph */}
         <div className={styles.imageCard}>
           <img
             src={getAssetUrl('images/team.jpg')}
-            alt="Jagdish Narigara architectural studio multidisciplinary design team"
+            alt="Jagdish Narigara interior design studio multidisciplinary team"
             className={styles.teamImage}
             loading="lazy"
             width="1400"

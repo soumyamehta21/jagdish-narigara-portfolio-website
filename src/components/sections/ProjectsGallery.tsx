@@ -56,7 +56,7 @@ export const ProjectsGallery: React.FC = () => {
           className={styles.horizontalTrack}
           tabIndex={0}
           role="region"
-          aria-label="Horizontal scrollable list of architecture projects"
+          aria-label="Horizontal scrollable list of interior design projects"
         >
           {projectsData.map((project) => (
             <article key={project.id} className={styles.projectCard}>

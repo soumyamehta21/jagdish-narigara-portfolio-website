@@ -6,20 +6,20 @@ import styles from './ServicesGrid.module.css';
 
 export const ServicesGrid: React.FC = () => {
   return (
-    <section id="service" className={styles.servicesSection} aria-label="Our Architecture & Interior Services">
+    <section id="service" className={styles.servicesSection} aria-label="Our Interior Design & 3D Visualization Services">
       <div className={styles.container}>
         {/* Section Header */}
         <SectionHeader
-          eyebrow="Our services"
-          heading="Adorning you at every edge."
-          description="We make even the wildest architectural dreams into dramatic yet feasible finished products anyone would be proud of."
+          eyebrow="Specialized Services"
+          heading={<>Crafting Interiors at <br />Every Precision Edge.</>}
+          description="From preliminary space planning and precision 2D drafting to immersive 3D walkthroughs and photorealistic CGI, we deliver end-to-end interior design and visualization solutions."
           layout="split"
         />
 
         {/* Separator Line */}
         <div className={styles.divider} />
 
-        {/* Grid of 9 Cards */}
+        {/* Grid of 7 Cards */}
         <div className={styles.cardsGrid}>
           {servicesData.map((service) => (
             <ServiceCard key={service.id} service={service} />

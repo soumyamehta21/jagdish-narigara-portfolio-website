@@ -1,5 +1,5 @@
 /**
- * TypeScript types and interfaces for the architecture studio portfolio website.
+ * TypeScript types and interfaces for Jagdish Narigara Interior Design Studio.
  */
 
 export interface StatItem {
@@ -12,9 +12,23 @@ export interface StatItem {
 
 export interface ServiceItem {
   id: string;
+  number: string;
   title: string;
-  iconName: 'Building2' | 'Armchair' | 'Compass' | 'Trees' | 'Hammer' | 'Lightbulb' | 'BarChart3' | 'FileCheck' | 'Box';
+  iconName: 'PenTool' | 'Lightbulb' | 'Sparkles' | 'Video' | 'Box' | 'LayoutGrid' | 'Layers';
   description: string;
+  deliverables?: string[];
+}
+
+export interface ProcessStep {
+  id: string;
+  number: string;
+  phase: string;
+  title: string;
+  summary: string;
+  description: string;
+  deliverables: string[];
+  benefit: string;
+  iconName: 'LayoutGrid' | 'PenTool' | 'Box' | 'Sparkles';
 }
 
 export interface ProjectItem {

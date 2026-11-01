@@ -1,6 +1,7 @@
 import {
   StatItem,
   ServiceItem,
+  ProcessStep,
   ProjectItem,
   MilestoneItem,
   TeamMember,
@@ -12,35 +13,36 @@ import { getAssetUrl } from '../utils/assetUrl';
 
 export const studioInfo: StudioInfo = {
   name: 'Jagdish Narigara',
-  legalName: 'Jagdish Narigara Interior Studio',
-  statusBadge: 'Open to a Work',
-  headline: 'Good design is obvious. Great design is transparent.',
-  headlineSub: "We've built our reputation by taking even the boldest visions and making them achievable realities.",
-  statementWords: ['WE DESIGN', 'SPACES', 'PEOPLE LOVE'],
-  philosophyTitle: 'Our Philosophy',
-  philosophyBody: "At Jagdish Narigara, we are driven by a passion for timeless design, innovative thinking, and precise execution. Our approach blends creativity with functionality, crafting spaces that inspire and endure. We work across residential, commercial, hospitality, and institutional projects, delivering designs that are thoughtful, sustainable, and tailor-made for our clients' visions. Every project is a reflection of our commitment to quality, detail, and architectural excellence. We don't just design buildings — we create experiences that leave a lasting impact.",
-  founderEyebrow: 'Our Founder',
-  founderHeading: 'A Journey of Design, Growth and Innovation',
-  founderIntro: 'Beginning with a passion for custom material craft and space planning in 2004, our studio has evolved into a premier multidisciplinary architectural practice. With foundations rooted in bespoke detailing, we transitioned into comprehensive architectural & interior design in 2011, launched our primary design atelier in 2015, and broadened our scope across luxury residences, commercial headquarters, and hospitality landmarks. As our vision grew, so did our multidisciplinary team of architects, planners, and visualizers. Every milestone represents our unwavering commitment to transforming environments with spatial poetry, functionality, and enduring craft.',
+  legalName: 'Jagdish Narigara Interior Design Studio',
+  statusBadge: 'Open to Projects',
+  headline: 'Bespoke spaces designed with precision & timeless artistry.',
+  headlineSub: 'Transforming spaces into timeless, functional, and visually breathtaking interiors through precision space planning, technical drafting, and hyper-realistic 3D visualization.',
+  statementWords: ['WE DESIGN', 'INTERIORS', 'YOU CHERISH'],
+  philosophyTitle: 'Our Design Philosophy',
+  philosophyBody: "At Jagdish Narigara Interior Studio, we believe great interiors seamlessly balance functional ergonomics with visual elegance. Every space is approached with meticulous care — from initial spatial planning and detailed drafting to photorealistic 3D visualization and lighting orchestration. We transform residential and commercial interiors into curated environments tailored to reflect individual lifestyles and aspirations. We don't just furnish spaces — we choreograph experiences that inspire and endure.",
+  founderEyebrow: 'The Studio Lead',
+  founderHeading: 'Two Decades of Passion for Interior Craft & 3D Visualization',
+  founderIntro: 'Beginning with custom material craft and spatial detailing in 2004, Jagdish Narigara has dedicated his career to the art of luxury interiors. Over the past twenty years, our practice has grown into a specialized interior design and 3D visualization studio. From technical 2D drafting and interior elevations to hyper-realistic CGI renderings and immersive walkthroughs, our mission is to ensure every interior detail is visualized, refined, and flawlessly realized before construction begins.',
   founderName: 'Jagdish Narigara',
-  founderTitle: 'Founder & Principal Architect',
-  quote: '"We build more than structures — we design customized experiences tuned to your aspirations."',
-  teamEyebrow: 'Our Team',
-  teamHeading: 'The Skill & Soul Behind Our Projects',
-  teamSubtext: 'Meet the talented designers, planners, and technologists who bring innovative visions to life.',
+  founderTitle: 'Founder & Principal Interior Designer',
+  quote: '"An interior is the natural projection of the soul. When space, light, and materiality converge in harmony, everyday living is elevated into an art form."',
+  teamEyebrow: 'Our Studio',
+  teamHeading: 'The Skill & Soul Behind Every Interior',
+  teamSubtext: 'Meet the talented interior designers, 3D visualizers, space planners, and technical drafters who bring extraordinary spaces to life.',
   phone: '+91 87006 55257',
   email: 'contact@jagdishnarigara.com',
   address: 'Main Avenue, Design District, New Delhi, India',
   whatsappUrl: 'https://wa.me/+918700655257',
-  marqueeWords: ['Dream', 'Design', 'Develop'],
+  marqueeWords: ['Plan', 'Draft', 'Model', 'Visualize', 'Transform'],
   copyright: '© 2026 Jagdish Narigara. All Rights Reserved.',
-  developerCredit: 'Crafted with architectural precision'
+  developerCredit: 'Crafted with interior precision'
 };
 
 export const navLinks: NavLink[] = [
   { id: 'nav-home', label: 'Home', href: '#home' },
+  { id: 'nav-process', label: 'Process', href: '#process' },
+  { id: 'nav-service', label: 'Services', href: '#service' },
   { id: 'nav-about', label: 'About', href: '#abt' },
-  { id: 'nav-service', label: 'Service', href: '#service' },
   { id: 'nav-project', label: 'Our work', href: '#project' },
 ];
 
@@ -63,7 +65,7 @@ export const statsData: StatItem[] = [
     id: 'stat-awards',
     targetNumber: 9,
     suffix: '+',
-    label: 'Prestigious Awards',
+    label: 'Design Awards',
     padZero: true,
   },
   {
@@ -75,84 +77,133 @@ export const statsData: StatItem[] = [
   },
 ];
 
+export const processStepsData: ProcessStep[] = [
+  {
+    id: 'process-space-planning',
+    number: '01',
+    phase: 'Phase 01',
+    title: 'Space Planning & Ergonomics',
+    summary: 'Analyzing natural light, circulation flow, and functional zoning to create purposeful layouts.',
+    description: 'Every project begins with a deep analysis of spatial geometry, lifestyle requirements, and circulation corridors. We produce strategic zoning diagrams and multiple layout options to ensure maximum ergonomics and comfort.',
+    deliverables: ['Circulation & Flow Diagrams', 'Functional Zoning Plans', 'Ergonomic Furniture Layouts'],
+    benefit: 'Unlocks the maximum potential of every square foot with effortless movement and comfort.',
+    iconName: 'LayoutGrid'
+  },
+  {
+    id: 'process-drafting',
+    number: '02',
+    phase: 'Phase 02',
+    title: '2D Drafting & Interior Elevations',
+    summary: 'Meticulously dimensioned CAD layouts, reflected ceiling plans, and millwork elevations.',
+    description: 'We translate approved spatial concepts into millimeter-accurate technical drawings. From reflected ceiling lighting plans to joinery sections and interior wall elevations, our drawings leave zero ambiguity for contractors.',
+    deliverables: ['Dimensioned Floor Plans', 'Ceiling & Lighting (RCP) Plans', 'Detailed Wall & Millwork Elevations'],
+    benefit: 'Guarantees foolproof construction, prevents costly site errors, and speeds up execution.',
+    iconName: 'PenTool'
+  },
+  {
+    id: 'process-modeling',
+    number: '03',
+    phase: 'Phase 03',
+    title: '3D Interior Modeling',
+    summary: 'Building true-to-scale 3D digital environments with custom cabinetry and curated furniture.',
+    description: 'We construct exact 3D digital replicas of your spaces. Custom wardrobes, media consoles, false ceiling profiles, and bespoke furniture pieces are modeled in volumetric precision before textures are applied.',
+    deliverables: ['True-to-Scale 3D Wireframes', 'Bespoke Cabinetry & Joinery 3D', 'Spatial Proportions Review'],
+    benefit: 'Enables you to see depth, scale, and volume in three dimensions before finalizing finishes.',
+    iconName: 'Box'
+  },
+  {
+    id: 'process-visualization',
+    number: '04',
+    phase: 'Phase 04',
+    title: 'Photorealistic CGI & 3D Walkthroughs',
+    summary: 'Cinematic lighting simulations, luxury material textures, and immersive virtual tours.',
+    description: 'Using advanced ray-traced rendering engines, we simulate exact lighting temperatures, daylight casts, marble veining, and fabric sheen. Cinematic animated walkthroughs let you experience the ambience firsthand.',
+    deliverables: ['4K Ultra-HD CGI Renders', 'Cinematic 3D Video Walkthroughs', 'Day & Night Lighting Scenarios'],
+    benefit: 'Complete visual certainty of the finished interior before investing in materials and procurement.',
+    iconName: 'Sparkles'
+  }
+];
+
 export const servicesData: ServiceItem[] = [
   {
-    id: 'service-arch',
-    title: 'Architectural Design',
-    iconName: 'Building2',
-    description: 'Comprehensive architectural concepts, spatial masterplans, structural harmony, and technical blueprints tailored to modern living.'
+    id: 'service-drafting',
+    number: '01',
+    title: '2D Drafting & Drawings',
+    iconName: 'PenTool',
+    description: 'Comprehensive dimensioned CAD floor plans, structural partition layouts, furniture arrangements, and construction-ready technical drawing packages.',
+    deliverables: ['Detailed CAD Layouts', 'Partition & Demolition Plans', 'Full Dimension Sets']
   },
   {
-    id: 'service-interior',
-    title: 'Interior Design',
-    iconName: 'Armchair',
-    description: 'Harmonious materials, bespoke furniture curation, acoustic engineering, and atmospheric detailing for residential and commercial spaces.'
-  },
-  {
-    id: 'service-urban',
-    title: 'Urban Planning',
-    iconName: 'Compass',
-    description: 'Sustainable community planning, infrastructural choreography, and civic spaces that foster human connection and ecological balance.'
-  },
-  {
-    id: 'service-landscape',
-    title: 'Landscaping Design',
-    iconName: 'Trees',
-    description: 'Seamless integration of natural flora, water features, biophilic microclimates, and stone terraces that embrace their topography.'
-  },
-  {
-    id: 'service-renovation',
-    title: 'Building Renovation',
-    iconName: 'Hammer',
-    description: 'Adaptive reuse, historic restoration, structural reinforcement, and contemporary metamorphosis of heritage and legacy properties.'
-  },
-  {
-    id: 'service-lighting',
-    title: 'Lighting Design',
+    id: 'service-ceiling-lighting',
+    number: '02',
+    title: 'Ceiling & Lighting Plans',
     iconName: 'Lightbulb',
-    description: 'Architectural illumination engineering, circadian rhythm daylighting analysis, and evocative mood illumination for luxury environments.'
+    description: 'Reflected ceiling plans (RCP), lighting fixture schedules, cove lighting detailing, electrical switch layouts, and circadian ambience engineering.',
+    deliverables: ['Reflected Ceiling Plans (RCP)', 'Fixture Schedules', 'Circadian Lighting Design']
   },
   {
-    id: 'service-feasibility',
-    title: 'Feasibility Studies',
-    iconName: 'BarChart3',
-    description: 'Environmental impact analysis, zoning assessments, cost viability modeling, and structural risk audits prior to site acquisition.'
+    id: 'service-rendering',
+    number: '03',
+    title: 'Photorealistic Rendering',
+    iconName: 'Sparkles',
+    description: 'High-fidelity 4K CGI visualizations capturing authentic natural daylight, realistic fabric textures, marble veining, and luxury material reflections.',
+    deliverables: ['4K Ultra-HD Stills', 'Natural Light & Dusk Studies', 'Tactile Material Textures']
   },
   {
-    id: 'service-code',
-    title: 'Building Code',
-    iconName: 'FileCheck',
-    description: 'Rigorous municipal regulatory compliance, fire life-safety standards, accessibility requirements, and statutory sanction approvals.'
+    id: 'service-walkthroughs',
+    number: '04',
+    title: '3D Walkthroughs',
+    iconName: 'Video',
+    description: 'Cinematic animated camera walkthroughs and 360° virtual tours that offer an immersive, true-to-scale journey through your future interior spaces.',
+    deliverables: ['Cinematic Video Tours', '360° Panoramic Views', 'Spatial Transition Previews']
   },
   {
-    id: 'service-3d',
-    title: '3D Visualization',
+    id: 'service-modeling',
+    number: '05',
+    title: '3D Interior Modeling',
     iconName: 'Box',
-    description: 'Photorealistic CGI cinematography, immersive virtual reality walkthroughs, and physical scale architectural model fabrication.'
+    description: 'High-precision 3D digital massing, custom cabinetry detailing, bespoke furniture models, and custom interior millwork modeled to exact scale.',
+    deliverables: ['Bespoke Millwork Models', 'Custom Furniture 3D', 'Volumetric Space Realization']
   },
+  {
+    id: 'service-space-planning',
+    number: '06',
+    title: 'Space Planning',
+    iconName: 'LayoutGrid',
+    description: 'Strategic spatial zoning, ergonomic circulation analysis, and functional furniture positioning to maximize comfort, utility, and visual elegance.',
+    deliverables: ['Zoning Diagrams', 'Traffic Flow Optimization', 'Ergonomic Layouts']
+  },
+  {
+    id: 'service-elevations',
+    number: '07',
+    title: 'Interior Elevations',
+    iconName: 'Layers',
+    description: 'Detailed vertical wall elevations detailing TV units, wardrobe millwork, vanity designs, feature wall paneling, and material transitions.',
+    deliverables: ['Feature Wall Profiles', 'Wardrobe & Kitchen Millwork', 'Vertical Material Mapping']
+  }
 ];
 
 export const projectsData: ProjectItem[] = [
   {
     id: 'proj-1',
     title: 'The Sky Horizon Penthouse',
-    category: 'Interior Architecture',
+    category: 'Luxury Living & Dining',
     year: '2025',
     location: 'Metropolitan Tower',
     imageSrc: getAssetUrl('images/project-1.jpg'),
   },
   {
     id: 'proj-2',
-    title: 'Monolithic Concrete Pavilion',
-    category: 'Residential Architecture',
+    title: 'Minimalist Executive Lounge',
+    category: 'Bespoke Lounge Interior',
     year: '2024',
     location: 'Hillside Reserve',
     imageSrc: getAssetUrl('images/project-2.jpg'),
   },
   {
     id: 'proj-3',
-    title: 'Atelier Glasshouse Estate',
-    category: 'Private Residence',
+    title: 'Serene Master Bedroom Suite',
+    category: 'Master Suite Interior',
     year: '2024',
     location: 'Coastal Escarpment',
     imageSrc: getAssetUrl('images/project-3.jpg'),
@@ -160,7 +211,7 @@ export const projectsData: ProjectItem[] = [
   {
     id: 'proj-4',
     title: 'Lumina Contemporary Gallery',
-    category: 'Cultural Space',
+    category: 'Curated Dining Interior',
     year: '2023',
     location: 'Civic Cultural Center',
     imageSrc: getAssetUrl('images/project-4.jpg'),
@@ -168,15 +219,15 @@ export const projectsData: ProjectItem[] = [
   {
     id: 'proj-5',
     title: 'The Japandi Courtyard Suite',
-    category: 'Bespoke Interior',
+    category: 'Minimalist Interior',
     year: '2023',
     location: 'Urban Sanctuary',
     imageSrc: getAssetUrl('images/project-5.jpg'),
   },
   {
     id: 'proj-6',
-    title: 'Solstice Cantilever Residence',
-    category: 'Sustainable Architecture',
+    title: 'Solstice Gourmet Kitchen & Bar',
+    category: 'Luxury Kitchen Interior',
     year: '2022',
     location: 'Lakeside Ridge',
     imageSrc: getAssetUrl('images/project-6.jpg'),
@@ -188,52 +239,52 @@ export const milestonesData: MilestoneItem[] = [
     id: 'milestone-1',
     date: 'June 2004',
     title: 'Where It All Began',
-    description: 'Founder Jagdish Narigara commences his journey by establishing a bespoke material and architectural craft workshop in New Delhi.'
+    description: 'Founder Jagdish Narigara establishes a bespoke material, joinery, and interior craft studio in New Delhi.'
   },
   {
     id: 'milestone-2',
     date: '2004 - 2011',
-    title: 'Retail & Material Expansion',
-    description: 'Successfully expands custom architectural fixtures and bespoke material galleries across prime design centers, building a loyal clientele.'
+    title: 'Material & Joinery Expansion',
+    description: 'Expands custom furniture craft, bespoke interior fixtures, and curated interior material galleries across prime design centers.'
   },
   {
     id: 'milestone-3',
     date: '2011 - 2015',
-    title: 'New Vision: Interiors',
-    description: 'Ventures into end-to-end luxury interior architecture, delivering turnkey spatial transformations with tailored engineering solutions.'
+    title: 'Full Turnkey Interior Focus',
+    description: 'Transitions into end-to-end luxury interior design, delivering bespoke space planning and customized joinery solutions.'
   },
   {
     id: 'milestone-4',
     date: 'Apr 2015',
-    title: 'First Interior Office',
-    description: 'Inaugurates our dedicated architectural studio atelier focusing on client consultations, material library curation, and blueprint development.'
+    title: 'First Dedicated Design Atelier',
+    description: 'Inaugurates our dedicated design atelier specializing in client consultations, material library curation, and precision CAD drafting.'
   },
   {
     id: 'milestone-5',
     date: 'May 2016',
-    title: 'Full Shifted to Interiors',
-    description: 'Pivots 100% of studio operations into full-scope architectural design, interior architecture, and luxury residential projects.'
+    title: 'Full Digital & 3D Integration',
+    description: 'Adopts advanced 3D volumetric modeling and lighting simulations to deliver photorealistic CGI renderings for all interior concepts.'
   },
   {
     id: 'milestone-6',
     date: 'Mar 2022',
-    title: 'Team Growth',
-    description: 'Scales the studio by welcoming leading architects, 3D visualizers, landscape planners, and structural consultants to our creative roster.'
+    title: 'Studio Expansion & Team Growth',
+    description: 'Welcomes specialized interior drafters, 3D visualizers, lighting consultants, and space planning experts to our core roster.'
   },
   {
     id: 'milestone-7',
     date: 'Jan 2025',
-    title: 'Bigger, Better Office',
-    description: 'Establishes a state-of-the-art flagship design headquarters with digital fabrication facilities, material lab, and client showcase suites.'
+    title: 'Flagship Visualization Studio',
+    description: 'Establishes our flagship design workspace with high-end CGI rendering suites, virtual walkthrough technology, and material labs.'
   },
 ];
 
 export const teamMembersData: TeamMember[] = [
-  { id: 'team-1', name: 'Jagdish Narigara', role: 'Principal Architect & Founder', specialty: 'Architectural Vision & Spatial Strategy' },
-  { id: 'team-2', name: 'Aarav Mehta', role: 'Lead Interior Architect', specialty: 'Luxury Residential & Materiality' },
-  { id: 'team-3', name: 'Simran Roy', role: 'Head of Urban Planning', specialty: 'Sustainable Environments & Civic Masterplans' },
-  { id: 'team-4', name: 'Rohan Verma', role: 'Director of 3D Visualization', specialty: 'CGI Cinematography & Computational Design' },
-  { id: 'team-5', name: 'Elena Chen', role: 'Senior Landscape Architect', specialty: 'Biophilic Integration & Microclimates' }
+  { id: 'team-1', name: 'Jagdish Narigara', role: 'Principal Interior Designer & Founder', specialty: 'Interior Vision & Space Planning' },
+  { id: 'team-2', name: 'Aarav Mehta', role: 'Senior 3D Visualizer & CGI Lead', specialty: 'Photorealistic Rendering & Walkthroughs' },
+  { id: 'team-3', name: 'Simran Roy', role: 'Senior Space Planning Specialist', specialty: 'Ergonomic Layouts & Interior Flow' },
+  { id: 'team-4', name: 'Rohan Verma', role: 'Lead Technical Drafter', specialty: '2D CAD Drafting & Interior Elevations' },
+  { id: 'team-5', name: 'Elena Chen', role: 'Lighting & Ceiling Consultant', specialty: 'Reflected Ceiling Plans & Ambiance' }
 ];
 
 export const socialLinks: SocialLink[] = [

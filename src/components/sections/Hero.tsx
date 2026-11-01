@@ -6,12 +6,12 @@ import styles from './Hero.module.css';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="home" className={styles.heroSection}>
-      {/* Background Architectural Atmosphere */}
+    <section id="home" className={styles.heroSection} aria-label="Hero Introduction">
+      {/* Background Interior Atmosphere */}
       <div className={styles.mediaBackground}>
         <img
           src={getAssetUrl('images/hero.jpg')}
-          alt="Atmospheric modern luxury villa residence at dusk"
+          alt="Atmospheric modern luxury interior space at dusk"
           className={styles.heroImage}
           loading="eager"
           fetchPriority="high"
@@ -35,7 +35,7 @@ export const Hero: React.FC = () => {
           <div className={styles.headlineCol}>
             <h1 className={styles.headline}>
               We blend art &amp; science to create <br className={styles.desktopBr} />
-              architectural magic.
+              extraordinary interiors.
             </h1>
           </div>
 
