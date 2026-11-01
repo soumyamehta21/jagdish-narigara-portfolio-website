@@ -45,6 +45,7 @@ export interface MilestoneItem {
   date: string;
   title: string;
   description: string;
+  tags?: string[];
 }
 
 export interface TeamMember {

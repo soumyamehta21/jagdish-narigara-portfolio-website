@@ -88,6 +88,13 @@ export const Timeline: React.FC = () => {
                   <div className={styles.milestoneCard}>
                     <h3 className={styles.milestoneTitle}>{item.title}</h3>
                     <p className={styles.milestoneDesc}>{item.description}</p>
+                    {item.tags && item.tags.length > 0 && (
+                      <div className={styles.tagsList}>
+                        {item.tags.map((tag, idx) => (
+                          <span key={idx} className={styles.milestoneTag}>{tag}</span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

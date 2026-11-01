@@ -20,8 +20,8 @@ export const studioInfo: StudioInfo = {
   statementWords: ['WE DESIGN', 'INTERIORS', 'YOU CHERISH'],
   philosophyTitle: 'Our Design Philosophy',
   philosophyBody: "At Jagdish Narigara Interior Studio, we believe great interiors seamlessly balance functional ergonomics with visual elegance. Every space is approached with meticulous care — from initial spatial planning and detailed drafting to photorealistic 3D visualization and lighting orchestration. We transform residential and commercial interiors into curated environments tailored to reflect individual lifestyles and aspirations. We don't just furnish spaces — we choreograph experiences that inspire and endure.",
-  founderEyebrow: 'The Studio Lead',
-  founderHeading: 'Two Decades of Passion for Interior Craft & 3D Visualization',
+  founderEyebrow: 'My Journey',
+  founderHeading: 'From Classroom to Landmark Projects',
   founderIntro: 'Beginning with custom material craft and spatial detailing in 2004, Jagdish Narigara has dedicated his career to the art of luxury interiors. Over the past twenty years, our practice has grown into a specialized interior design and 3D visualization studio. From technical 2D drafting and interior elevations to hyper-realistic 3D renderings and immersive walkthroughs, our mission is to ensure every interior detail is visualized, refined, and flawlessly realized before construction begins.',
   founderName: 'Jagdish Narigara',
   founderTitle: 'Founder & Principal Interior Designer',
@@ -237,45 +237,50 @@ export const projectsData: ProjectItem[] = [
 export const milestonesData: MilestoneItem[] = [
   {
     id: 'milestone-1',
-    date: 'June 2004',
-    title: 'Where It All Began',
-    description: 'Founder Jagdish Narigara establishes a bespoke material, joinery, and interior craft studio in New Delhi.'
+    date: 'Today',
+    title: "Let's Build Yours",
+    description: "Open for new residential, commercial and hospitality projects. Let's design a space that feels like you.",
   },
   {
     id: 'milestone-2',
-    date: '2004 - 2011',
-    title: 'Material & Joinery Expansion',
-    description: 'Expands custom furniture craft, bespoke interior fixtures, and curated interior material galleries across prime design centers.'
+    date: '2026',
+    title: 'Bungalows & Large Residences',
+    description: 'Continues to deliver bespoke bungalows and residences with a focus on detail and finish.',
+    tags: ['The Aviraat Bungalows', 'HaxSmapur', 'Shilp Residency', 'Celestial'],
   },
   {
     id: 'milestone-3',
-    date: '2011 - 2015',
-    title: 'Full Turnkey Interior Focus',
-    description: 'Transitions into end-to-end luxury interior design, delivering bespoke space planning and customized joinery solutions.'
+    date: '2026',
+    title: 'Beyond Homes: Healthcare & Workspaces',
+    description: 'Expands into commercial and healthcare design, shaping hospitals and a modern IT office.',
+    tags: ['Blissmother Hospital', 'Auromax Hospital', 'IT Office, Times Square Grand'],
   },
   {
     id: 'milestone-4',
-    date: 'Apr 2015',
-    title: 'First Dedicated Design Atelier',
-    description: 'Inaugurates our dedicated design atelier specializing in client consultations, material library curation, and precision CAD drafting.'
+    date: '2025',
+    title: 'Premium Residential Work',
+    description: "Designs for high-rise residences and penthouses in some of the city's well-known buildings.",
+    tags: ['Times 104', 'Shallgram Penthouse', 'Shilp Residency', 'Skyros'],
   },
   {
     id: 'milestone-5',
-    date: 'May 2016',
-    title: 'Full Digital & 3D Integration',
-    description: 'Adopts advanced 3D volumetric modeling and lighting simulations to deliver photorealistic renderings for all interior concepts.'
+    date: '2024',
+    title: 'Going Independent',
+    description: 'Starts taking on freelance projects alongside, building a personal client base and design voice.',
+    tags: ['The Klimana'],
   },
   {
     id: 'milestone-6',
-    date: 'Mar 2022',
-    title: 'Studio Expansion & Team Growth',
-    description: 'Welcomes specialized interior drafters, 3D visualizers, lighting consultants, and space planning experts to our core roster.'
+    date: '2023',
+    title: 'First Step in the Industry',
+    description: 'Begins professional practice with a renowned interior design firm in Ahmedabad, learning real-world detailing, site coordination and client handling.',
+    tags: ['The North', 'Aasopalav Bungalows', 'Ocean Park'],
   },
   {
     id: 'milestone-7',
-    date: 'Jan 2025',
-    title: 'Flagship Visualization Studio',
-    description: 'Establishes our flagship design workspace with high-end rendering suites, virtual walkthrough technology, and material labs.'
+    date: 'Mar 2022',
+    title: 'Where It All Began',
+    description: 'Enrolls in an Interior Design course, laying the foundation in space planning, materials and design thinking.',
   },
 ];
 
