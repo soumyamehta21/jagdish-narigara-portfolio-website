@@ -53,7 +53,7 @@ export const Timeline: React.FC = () => {
                 height="600"
               />
               <div className={styles.founderBadgeOverlay}>
-                <span>Established 2004</span>
+                <span>Since Mar 2022</span>
               </div>
             </div>
           </div>
