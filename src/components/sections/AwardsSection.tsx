@@ -80,3 +80,4 @@ export const AwardsSection: React.FC = () => {
     </section>
   );
 };
+
