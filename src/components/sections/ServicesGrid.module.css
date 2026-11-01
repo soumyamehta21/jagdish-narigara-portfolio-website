@@ -46,10 +46,10 @@
 .serviceCard:hover,
 .serviceCard:focus-visible {
   background: rgba(60, 60, 60, 0.4);
-  border-color: rgba(212, 175, 55, 0.45);
+  border-color: var(--accent-interior-border);
   transform: translateY(-5px);
   color: var(--color-text-primary);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 15px -3px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 15px -3px var(--accent-interior-glow);
   outline: none;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .serviceCard:hover .serviceIndex {
-  color: #e6ca65;
+  color: var(--accent-interior-light);
 }
 
 .iconContainer {
@@ -86,9 +86,9 @@
 }
 
 .serviceCard:hover .iconContainer {
-  background: rgba(212, 175, 55, 0.15);
-  border-color: rgba(212, 175, 55, 0.5);
-  color: #e6ca65;
+  background: var(--accent-interior-bg);
+  border-color: var(--accent-interior);
+  color: var(--accent-interior-light);
   transform: scale(1.06);
 }
 
@@ -143,9 +143,9 @@
 }
 
 .serviceCard:hover .deliverableTag {
-  color: #e6ca65;
-  border-color: rgba(212, 175, 55, 0.25);
-  background: rgba(212, 175, 55, 0.08);
+  color: var(--accent-interior-light);
+  border-color: var(--accent-interior-border);
+  background: var(--accent-interior-bg);
 }
 
 @media (max-width: 960px) {

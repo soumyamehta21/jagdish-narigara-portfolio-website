@@ -30,6 +30,13 @@
   --color-timeline-end: #ee0979;
   --gradient-timeline: linear-gradient(to bottom, #ff6a00, #ee0979);
 
+  /* Studio Theme Accent: Warm Champagne / Soft Muted Bronze (Replaces harsh yellow) */
+  --accent-interior: #c8a27a;
+  --accent-interior-light: #dfcaa7;
+  --accent-interior-glow: rgba(200, 162, 122, 0.14);
+  --accent-interior-border: rgba(200, 162, 122, 0.45);
+  --accent-interior-bg: rgba(200, 162, 122, 0.12);
+
   /* Border Colors */
   --color-border-subtle: rgba(255, 255, 255, 0.08);
   --color-border-medium: rgba(255, 255, 255, 0.18);

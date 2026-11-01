@@ -144,3 +144,4 @@ export const DesignProcess: React.FC = () => {
     </section>
   );
 };
+
