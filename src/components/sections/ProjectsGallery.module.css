@@ -58,8 +58,6 @@
   display: flex;
   gap: 1.75rem;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   padding: 1rem var(--spacing-section-x) 2rem;
   scrollbar-width: none; /* Firefox */
@@ -72,7 +70,6 @@
 .projectCard {
   flex: 0 0 440px;
   height: 520px;
-  scroll-snap-align: start;
   border-radius: var(--radius-pill);
   overflow: hidden;
   position: relative;
@@ -139,7 +136,7 @@
 }
 
 .category {
-  color: var(--color-accent-green);
+  color: var(--accent-interior-light);
   font-weight: var(--font-weight-semibold);
 }
 

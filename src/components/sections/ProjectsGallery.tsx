@@ -1,19 +1,83 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { projectsData } from '../../data/siteData';
 import { SectionHeader } from '../common/SectionHeader';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 import styles from './ProjectsGallery.module.css';
 
 export const ProjectsGallery: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const pauseTimeoutRef = useRef<number | null>(null);
+  const prefersReduced = useReducedMotion();
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (!scrollContainerRef.current) return;
-    const scrollAmount = direction === 'left' ? -460 : 460;
-    scrollContainerRef.current.scrollBy({
-      left: scrollAmount,
+  // Duplicate items for infinite seamless scroll
+  const displayProjects = useMemo(() => [...projectsData, ...projectsData], []);
+
+  // Continuous auto-scroll loop
+  useEffect(() => {
+    if (prefersReduced) return;
+
+    let animationFrameId: number;
+    const speed = 0.85; // Slow, elegant luxury gliding speed (~50px per second)
+
+    const step = () => {
+      const track = scrollContainerRef.current;
+      if (track && !isPaused) {
+        const halfWidth = track.scrollWidth / 2;
+        if (halfWidth > 0 && track.scrollLeft >= halfWidth) {
+          track.scrollLeft -= halfWidth;
+        }
+        track.scrollLeft += speed;
+      }
+      animationFrameId = requestAnimationFrame(step);
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      if (pauseTimeoutRef.current) window.clearTimeout(pauseTimeoutRef.current);
+    };
+  }, [isPaused, prefersReduced]);
+
+  const scroll = useCallback((direction: 'left' | 'right') => {
+    const track = scrollContainerRef.current;
+    if (!track) return;
+
+    // Pause briefly on manual navigation so the user can inspect their chosen card
+    setIsPaused(true);
+    if (pauseTimeoutRef.current) window.clearTimeout(pauseTimeoutRef.current);
+    pauseTimeoutRef.current = window.setTimeout(() => {
+      setIsPaused(false);
+    }, 4500);
+
+    const halfWidth = track.scrollWidth / 2;
+    const cardScrollAmount = 468; // 440px card + 28px gap
+    const scrollDelta = direction === 'left' ? -cardScrollAmount : cardScrollAmount;
+
+    // Prevent hitting hard left boundary when scrolling left
+    if (direction === 'left' && track.scrollLeft < cardScrollAmount) {
+      track.scrollLeft += halfWidth;
+    } else if (direction === 'right' && track.scrollLeft >= halfWidth) {
+      track.scrollLeft -= halfWidth;
+    }
+
+    track.scrollBy({
+      left: scrollDelta,
       behavior: 'smooth',
     });
+  }, []);
+
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+
+  const handleTouchStart = () => setIsPaused(true);
+  const handleTouchEnd = () => {
+    if (pauseTimeoutRef.current) window.clearTimeout(pauseTimeoutRef.current);
+    pauseTimeoutRef.current = window.setTimeout(() => {
+      setIsPaused(false);
+    }, 2500);
   };
 
   return (
@@ -22,9 +86,9 @@ export const ProjectsGallery: React.FC = () => {
         {/* Header with Navigation Controls */}
         <div className={styles.headerWrapper}>
           <SectionHeader
-            eyebrow="Our Project"
+            eyebrow="Our Projects"
             heading={<>The Proof is in <br />Our Portfolio</>}
-            description="Browse a sampling of our favorite built incarnations of clients' imaginative expectations and our innovative solutions."
+            description="Explore our curated portfolio of bespoke interior transformations, custom living environments, and photorealistic 3D visualizations."
             layout="split"
           />
 
@@ -49,8 +113,14 @@ export const ProjectsGallery: React.FC = () => {
         </div>
       </div>
 
-      {/* Horizontal Scroll Track */}
-      <div className={styles.galleryWrapper}>
+      {/* Horizontal Scroll Track with Auto-Scroll & Hover Pause */}
+      <div
+        className={styles.galleryWrapper}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           ref={scrollContainerRef}
           className={styles.horizontalTrack}
@@ -58,14 +128,14 @@ export const ProjectsGallery: React.FC = () => {
           role="region"
           aria-label="Horizontal scrollable list of interior design projects"
         >
-          {projectsData.map((project) => (
-            <article key={project.id} className={styles.projectCard}>
+          {displayProjects.map((project, index) => (
+            <article key={`${project.id}-${index}`} className={styles.projectCard}>
               <div className={styles.cardInner}>
                 <img
                   src={project.imageSrc}
                   alt={project.title}
                   className={styles.projectImage}
-                  loading="lazy"
+                  loading={index < 4 ? 'eager' : 'lazy'}
                   width="800"
                   height="600"
                 />
