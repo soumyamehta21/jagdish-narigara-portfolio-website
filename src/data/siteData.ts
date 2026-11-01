@@ -22,7 +22,7 @@ export const studioInfo: StudioInfo = {
   philosophyBody: "At Jagdish Narigara Interior Studio, we believe great interiors seamlessly balance functional ergonomics with visual elegance. Every space is approached with meticulous care — from initial spatial planning and detailed drafting to photorealistic 3D visualization and lighting orchestration. We transform residential and commercial interiors into curated environments tailored to reflect individual lifestyles and aspirations. We don't just furnish spaces — we choreograph experiences that inspire and endure.",
   founderEyebrow: 'The Studio Lead',
   founderHeading: 'Two Decades of Passion for Interior Craft & 3D Visualization',
-  founderIntro: 'Beginning with custom material craft and spatial detailing in 2004, Jagdish Narigara has dedicated his career to the art of luxury interiors. Over the past twenty years, our practice has grown into a specialized interior design and 3D visualization studio. From technical 2D drafting and interior elevations to hyper-realistic CGI renderings and immersive walkthroughs, our mission is to ensure every interior detail is visualized, refined, and flawlessly realized before construction begins.',
+  founderIntro: 'Beginning with custom material craft and spatial detailing in 2004, Jagdish Narigara has dedicated his career to the art of luxury interiors. Over the past twenty years, our practice has grown into a specialized interior design and 3D visualization studio. From technical 2D drafting and interior elevations to hyper-realistic 3D renderings and immersive walkthroughs, our mission is to ensure every interior detail is visualized, refined, and flawlessly realized before construction begins.',
   founderName: 'Jagdish Narigara',
   founderTitle: 'Founder & Principal Interior Designer',
   quote: '"An interior is the natural projection of the soul. When space, light, and materiality converge in harmony, everyday living is elevated into an art form."',
@@ -115,10 +115,10 @@ export const processStepsData: ProcessStep[] = [
     id: 'process-visualization',
     number: '04',
     phase: 'Phase 04',
-    title: 'Photorealistic CGI & 3D Walkthroughs',
+    title: 'Photorealistic Renderings & 3D Walkthroughs',
     summary: 'Cinematic lighting simulations, luxury material textures, and immersive virtual tours.',
     description: 'Using advanced ray-traced rendering engines, we simulate exact lighting temperatures, daylight casts, marble veining, and fabric sheen. Cinematic animated walkthroughs let you experience the ambience firsthand.',
-    deliverables: ['4K Ultra-HD CGI Renders', 'Cinematic 3D Video Walkthroughs', 'Day & Night Lighting Scenarios'],
+    deliverables: ['4K Ultra-HD 3D Renders', 'Cinematic 3D Video Walkthroughs', 'Day & Night Lighting Scenarios'],
     benefit: 'Complete visual certainty of the finished interior before investing in materials and procurement.',
     iconName: 'Sparkles'
   }
@@ -146,7 +146,7 @@ export const servicesData: ServiceItem[] = [
     number: '03',
     title: 'Photorealistic Rendering',
     iconName: 'Sparkles',
-    description: 'High-fidelity 4K CGI visualizations capturing authentic natural daylight, realistic fabric textures, marble veining, and luxury material reflections.',
+    description: 'High-fidelity 4K photorealistic renderings capturing authentic natural daylight, tactile fabric textures, marble veining, and luxury material reflections.',
     deliverables: ['4K Ultra-HD Stills', 'Natural Light & Dusk Studies', 'Tactile Material Textures']
   },
   {
@@ -263,7 +263,7 @@ export const milestonesData: MilestoneItem[] = [
     id: 'milestone-5',
     date: 'May 2016',
     title: 'Full Digital & 3D Integration',
-    description: 'Adopts advanced 3D volumetric modeling and lighting simulations to deliver photorealistic CGI renderings for all interior concepts.'
+    description: 'Adopts advanced 3D volumetric modeling and lighting simulations to deliver photorealistic renderings for all interior concepts.'
   },
   {
     id: 'milestone-6',
@@ -275,13 +275,13 @@ export const milestonesData: MilestoneItem[] = [
     id: 'milestone-7',
     date: 'Jan 2025',
     title: 'Flagship Visualization Studio',
-    description: 'Establishes our flagship design workspace with high-end CGI rendering suites, virtual walkthrough technology, and material labs.'
+    description: 'Establishes our flagship design workspace with high-end rendering suites, virtual walkthrough technology, and material labs.'
   },
 ];
 
 export const teamMembersData: TeamMember[] = [
   { id: 'team-1', name: 'Jagdish Narigara', role: 'Principal Interior Designer & Founder', specialty: 'Interior Vision & Space Planning' },
-  { id: 'team-2', name: 'Aarav Mehta', role: 'Senior 3D Visualizer & CGI Lead', specialty: 'Photorealistic Rendering & Walkthroughs' },
+  { id: 'team-2', name: 'Aarav Mehta', role: 'Senior 3D Visualizer & Rendering Lead', specialty: 'Photorealistic Rendering & Walkthroughs' },
   { id: 'team-3', name: 'Simran Roy', role: 'Senior Space Planning Specialist', specialty: 'Ergonomic Layouts & Interior Flow' },
   { id: 'team-4', name: 'Rohan Verma', role: 'Lead Technical Drafter', specialty: '2D CAD Drafting & Interior Elevations' },
   { id: 'team-5', name: 'Elena Chen', role: 'Lighting & Ceiling Consultant', specialty: 'Reflected Ceiling Plans & Ambiance' }

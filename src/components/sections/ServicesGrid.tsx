@@ -12,7 +12,7 @@ export const ServicesGrid: React.FC = () => {
         <SectionHeader
           eyebrow="Specialized Services"
           heading={<>Crafting Interiors at <br />Every Precision Edge.</>}
-          description="From preliminary space planning and precision 2D drafting to immersive 3D walkthroughs and photorealistic CGI, we deliver end-to-end interior design and visualization solutions."
+          description="From preliminary space planning and precision 2D drafting to immersive 3D walkthroughs and photorealistic renderings, we deliver end-to-end interior design and visualization solutions."
           layout="split"
         />
 

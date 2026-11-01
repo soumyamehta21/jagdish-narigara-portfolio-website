@@ -243,7 +243,7 @@
 .spotlightContent {
   display: flex;
   flex-direction: column;
-  gap: 2.25rem;
+  gap: 1rem;
 }
 
 .spotlightHeader {
@@ -251,7 +251,7 @@
   flex-direction: column;
   gap: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .spotlightBadgeRow {
@@ -444,7 +444,7 @@
   }
 
   .spotlightContent {
-    gap: 1.75rem;
+    gap: 1rem;
   }
 
   .spotlightActions {
