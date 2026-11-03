@@ -192,7 +192,7 @@ export const ProjectsGallery: React.FC = () => {
                     type="button"
                     className={`${styles.card} ${isActive ? styles.cardActive : ''}`}
                     onClick={() => handleOpenGallery(project)}
-                    aria-label={`View ${project.title} gallery (${project.category}, ${project.year})`}
+                    aria-label={`View ${project.title} gallery (${project.category}${project.year ? `, ${project.year}` : ''})`}
                   >
                     <div className={styles.cardInner}>
                       <img
@@ -215,10 +215,14 @@ export const ProjectsGallery: React.FC = () => {
                       <div className={styles.cardContent}>
                         <div className={styles.metaRow}>
                           <span className={styles.category}>{project.category}</span>
-                          <span className={styles.year}>{project.year}</span>
+                          {project.year && <span className={styles.year}>{project.year}</span>}
                         </div>
                         <h3 className={styles.cardTitle}>{project.title}</h3>
-                        <p className={styles.location}>{project.location}</p>
+                        {project.tagline ? (
+                          <p className={styles.tagline}>{project.tagline}</p>
+                        ) : project.location ? (
+                          <p className={styles.location}>{project.location}</p>
+                        ) : null}
                       </div>
                     </div>
                   </button>

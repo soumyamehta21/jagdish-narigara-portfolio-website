@@ -33,14 +33,14 @@ export const ProjectGalleryModal: React.FC<ProjectGalleryModalProps> = ({
     return [{ src: project.imageSrc, alt: project.title }];
   }, [project]);
 
-  // Reset index whenever project opens
-  useEffect(() => {
-    if (isOpen) {
-      setCurrentIdx(0);
-      setIsImgLoading(true);
-      setImgError(false);
-    }
-  }, [isOpen, project]);
+  // Adjust state during render if project identity changed
+  const [prevProject, setPrevProject] = useState<ProjectItem | null>(project);
+  if (project !== prevProject) {
+    setPrevProject(project);
+    setCurrentIdx(0);
+    setIsImgLoading(true);
+    setImgError(false);
+  }
 
   // Preload adjacent images
   useEffect(() => {
@@ -185,14 +185,18 @@ export const ProjectGalleryModal: React.FC<ProjectGalleryModalProps> = ({
                 <Tag size={12} aria-hidden="true" />
                 {project.category}
               </span>
-              <span className={styles.yearBadge}>
-                <Calendar size={12} aria-hidden="true" />
-                {project.year}
-              </span>
-              <span className={styles.locationBadge}>
-                <MapPin size={12} aria-hidden="true" />
-                {project.location}
-              </span>
+              {project.year && (
+                <span className={styles.yearBadge}>
+                  <Calendar size={12} aria-hidden="true" />
+                  {project.year}
+                </span>
+              )}
+              {project.location && (
+                <span className={styles.locationBadge}>
+                  <MapPin size={12} aria-hidden="true" />
+                  {project.location}
+                </span>
+              )}
             </div>
             <h2 id="modal-project-title" className={styles.title}>
               {project.title}
@@ -246,6 +250,8 @@ export const ProjectGalleryModal: React.FC<ProjectGalleryModalProps> = ({
                 key={currentImage.src}
                 src={currentImage.src}
                 alt={currentImage.alt}
+                width={currentImage.width}
+                height={currentImage.height}
                 className={`${styles.mainImage} ${isImgLoading ? styles.hiddenImage : styles.visibleImage}`}
                 onLoad={() => setIsImgLoading(false)}
                 onError={() => {
@@ -298,7 +304,7 @@ export const ProjectGalleryModal: React.FC<ProjectGalleryModalProps> = ({
                 }}
                 aria-label={`View image ${idx + 1}: ${img.alt}`}
               >
-                <img src={img.src} alt="" className={styles.thumbImage} loading="lazy" />
+                <img src={img.thumbSrc || img.src} alt="" className={styles.thumbImage} loading="lazy" />
               </button>
             ))}
           </div>

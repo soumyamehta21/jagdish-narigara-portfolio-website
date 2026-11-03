@@ -1,0 +1,417 @@
+/**
+ * AUTO-GENERATED PORTFOLIO PROJECTS MANIFEST
+ * Generated on: 2026-11-03T13:26:35.965Z
+ * Re-run generator via: npm run generate:portfolio
+ */
+
+import { ProjectItem } from '../types';
+import { getAssetUrl } from '../utils/assetUrl';
+
+export const portfolioProjects: ProjectItem[] = [
+  {
+    id: 'proj-1',
+    slug: 'the-amber-horizon-lounge',
+    title: "The Amber Horizon Lounge",
+    category: "Contemporary Living Interior",
+    tagline: "Fluted timber paneling and marble console illuminated by warm perimeter glow.",
+    // [Year] TODO: Add exact completion year once provided by client
+    year: undefined,
+    // [Location] TODO: Add project location once provided by client
+    location: undefined,
+    imageSrc: getAssetUrl('portfolio/the-amber-horizon-lounge/cover.webp'),
+    images: [
+      {
+        src: getAssetUrl('portfolio/the-amber-horizon-lounge/img-01-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-amber-horizon-lounge/img-01-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Amber Horizon Lounge, view 1 of 7: Living lounge TV feature wall with custom curved vitrines and low marble console",
+        caption: "Living lounge TV feature wall with custom curved vitrines and low marble console",
+      },
+      {
+        src: getAssetUrl('portfolio/the-amber-horizon-lounge/img-02-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-amber-horizon-lounge/img-02-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Amber Horizon Lounge, view 2 of 7: Living and dining transition framed by arched glass partition and marble dining table",
+        caption: "Living and dining transition framed by arched glass partition and marble dining table",
+      },
+      {
+        src: getAssetUrl('portfolio/the-amber-horizon-lounge/img-03-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-amber-horizon-lounge/img-03-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Amber Horizon Lounge, view 3 of 7: Dining area showcasing six upholstered sculptural chairs and white marble table",
+        caption: "Dining area showcasing six upholstered sculptural chairs and white marble table",
+      },
+      {
+        src: getAssetUrl('portfolio/the-amber-horizon-lounge/img-04-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-amber-horizon-lounge/img-04-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Amber Horizon Lounge, view 4 of 7: Close-up detail of illuminated curved display vitrine with decorative art ceramics",
+        caption: "Close-up detail of illuminated curved display vitrine with decorative art ceramics",
+      },
+      {
+        src: getAssetUrl('portfolio/the-amber-horizon-lounge/img-05-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-amber-horizon-lounge/img-05-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Amber Horizon Lounge, view 5 of 7: Full wide-angle view of living space highlighting coved ceiling and ambient strip lighting",
+        caption: "Full wide-angle view of living space highlighting coved ceiling and ambient strip lighting",
+      },
+      {
+        src: getAssetUrl('portfolio/the-amber-horizon-lounge/img-06-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-amber-horizon-lounge/img-06-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Amber Horizon Lounge, view 6 of 7: Sectional sofa perspective facing the wood-paneled entertainment feature wall",
+        caption: "Sectional sofa perspective facing the wood-paneled entertainment feature wall",
+      },
+      {
+        src: getAssetUrl('portfolio/the-amber-horizon-lounge/img-07-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-amber-horizon-lounge/img-07-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Amber Horizon Lounge, view 7 of 7: Arched entry view from living area toward dining salon and kitchen corridor",
+        caption: "Arched entry view from living area toward dining salon and kitchen corridor",
+      },
+    ],
+  },
+  {
+    id: 'proj-2',
+    slug: 'verdant-marble-living-salon',
+    title: "Verdant Marble Living Salon",
+    category: "Luxury Living Room Interior",
+    tagline: "Bookmatched green marble feature wall balanced by sculpted velvet seating.",
+    // [Year] TODO: Add exact completion year once provided by client
+    year: undefined,
+    // [Location] TODO: Add project location once provided by client
+    location: undefined,
+    imageSrc: getAssetUrl('portfolio/verdant-marble-living-salon/cover.webp'),
+    images: [
+      {
+        src: getAssetUrl('portfolio/verdant-marble-living-salon/img-01-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/verdant-marble-living-salon/img-01-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Verdant Marble Living Salon, view 1 of 5: Frontal view of bookmatched green marble TV wall flanked by dark fluted paneling",
+        caption: "Frontal view of bookmatched green marble TV wall flanked by dark fluted paneling",
+      },
+      {
+        src: getAssetUrl('portfolio/verdant-marble-living-salon/img-02-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/verdant-marble-living-salon/img-02-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Verdant Marble Living Salon, view 2 of 5: Wide perspective featuring wireframe ribbon chandelier and open-plan kitchen counter",
+        caption: "Wide perspective featuring wireframe ribbon chandelier and open-plan kitchen counter",
+      },
+      {
+        src: getAssetUrl('portfolio/verdant-marble-living-salon/img-03-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/verdant-marble-living-salon/img-03-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Verdant Marble Living Salon, view 3 of 5: Intimate lounge seating zone with deep forest-green armchairs and marble coffee tables",
+        caption: "Intimate lounge seating zone with deep forest-green armchairs and marble coffee tables",
+      },
+      {
+        src: getAssetUrl('portfolio/verdant-marble-living-salon/img-04-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/verdant-marble-living-salon/img-04-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Verdant Marble Living Salon, view 4 of 5: Kitchen bar transition highlighting backlit glass cabinets and marble waterfall counter",
+        caption: "Kitchen bar transition highlighting backlit glass cabinets and marble waterfall counter",
+      },
+      {
+        src: getAssetUrl('portfolio/verdant-marble-living-salon/img-05-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/verdant-marble-living-salon/img-05-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Verdant Marble Living Salon, view 5 of 5: Corridor perspective showing floor-to-ceiling fluted wood panels and brass reveals",
+        caption: "Corridor perspective showing floor-to-ceiling fluted wood panels and brass reveals",
+      },
+    ],
+  },
+  {
+    id: 'proj-3',
+    slug: 'the-urban-modular-kitchen',
+    title: "The Urban Modular Kitchen",
+    category: "Modern Kitchen Interior",
+    tagline: "Matte charcoal cabinetry paired with a waterfall marble breakfast counter.",
+    // [Year] TODO: Add exact completion year once provided by client
+    year: undefined,
+    // [Location] TODO: Add project location once provided by client
+    location: undefined,
+    imageSrc: getAssetUrl('portfolio/the-urban-modular-kitchen/cover.webp'),
+    images: [
+      {
+        src: getAssetUrl('portfolio/the-urban-modular-kitchen/img-01-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-urban-modular-kitchen/img-01-thumb.webp'),
+        width: 1920,
+        height: 1269,
+        alt: "The Urban Modular Kitchen, view 1 of 3: Front elevation of U-shaped matte charcoal cabinetry with integrated appliances and marble bar",
+        caption: "Front elevation of U-shaped matte charcoal cabinetry with integrated appliances and marble bar",
+      },
+      {
+        src: getAssetUrl('portfolio/the-urban-modular-kitchen/img-02-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-urban-modular-kitchen/img-02-thumb.webp'),
+        width: 1920,
+        height: 1359,
+        alt: "The Urban Modular Kitchen, view 2 of 3: Angled viewpoint highlighting waterfall grey marble breakfast counter and counter stool",
+        caption: "Angled viewpoint highlighting waterfall grey marble breakfast counter and counter stool",
+      },
+      {
+        src: getAssetUrl('portfolio/the-urban-modular-kitchen/img-03-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-urban-modular-kitchen/img-03-thumb.webp'),
+        width: 1920,
+        height: 1579,
+        alt: "The Urban Modular Kitchen, view 3 of 3: Close perspective of under-cabinet illumination, quartz backsplash, and gas hob",
+        caption: "Close perspective of under-cabinet illumination, quartz backsplash, and gas hob",
+      },
+    ],
+  },
+  {
+    id: 'proj-4',
+    slug: 'the-terracotta-suede-suite',
+    title: "The Terracotta Suede Suite",
+    category: "Master Bedroom Interior",
+    tagline: "Layered camel acoustic wall panels complemented by warm drop pendants.",
+    // [Year] TODO: Add exact completion year once provided by client
+    year: undefined,
+    // [Location] TODO: Add project location once provided by client
+    location: undefined,
+    imageSrc: getAssetUrl('portfolio/the-terracotta-suede-suite/cover.webp'),
+    images: [
+      {
+        src: getAssetUrl('portfolio/the-terracotta-suede-suite/img-01-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-terracotta-suede-suite/img-01-thumb.webp'),
+        width: 1920,
+        height: 947,
+        alt: "The Terracotta Suede Suite, view 1 of 4: Frontal perspective of upholstered bed against camel suede horizontal paneling",
+        caption: "Frontal perspective of upholstered bed against camel suede horizontal paneling",
+      },
+      {
+        src: getAssetUrl('portfolio/the-terracotta-suede-suite/img-02-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-terracotta-suede-suite/img-02-thumb.webp'),
+        width: 1920,
+        height: 947,
+        alt: "The Terracotta Suede Suite, view 2 of 4: Perspective view showing integrated study desk and floating display shelves",
+        caption: "Perspective view showing integrated study desk and floating display shelves",
+      },
+      {
+        src: getAssetUrl('portfolio/the-terracotta-suede-suite/img-03-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-terracotta-suede-suite/img-03-thumb.webp'),
+        width: 1920,
+        height: 1225,
+        alt: "The Terracotta Suede Suite, view 3 of 4: Angled viewpoint highlighting brass vertical reveal strips and textured acoustic fabric",
+        caption: "Angled viewpoint highlighting brass vertical reveal strips and textured acoustic fabric",
+      },
+      {
+        src: getAssetUrl('portfolio/the-terracotta-suede-suite/img-04-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-terracotta-suede-suite/img-04-thumb.webp'),
+        width: 1908,
+        height: 1920,
+        alt: "The Terracotta Suede Suite, view 4 of 4: Bedside table detail with amber glass pendant light and indoor planter",
+        caption: "Bedside table detail with amber glass pendant light and indoor planter",
+      },
+    ],
+  },
+  {
+    id: 'proj-5',
+    slug: 'the-charcoal-oak-sanctuary',
+    title: "The Charcoal Oak Sanctuary",
+    category: "Luxury Bedroom Interior",
+    tagline: "Curved backlit headboard alcove set against deep charcoal fluted woodwork.",
+    // [Year] TODO: Add exact completion year once provided by client
+    year: undefined,
+    // [Location] TODO: Add project location once provided by client
+    location: undefined,
+    imageSrc: getAssetUrl('portfolio/the-charcoal-oak-sanctuary/cover.webp'),
+    images: [
+      {
+        src: getAssetUrl('portfolio/the-charcoal-oak-sanctuary/img-01-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-charcoal-oak-sanctuary/img-01-thumb.webp'),
+        width: 1920,
+        height: 1105,
+        alt: "The Charcoal Oak Sanctuary, view 1 of 4: Front elevation of curved backlit headboard alcove with teardrop glass pendants",
+        caption: "Front elevation of curved backlit headboard alcove with teardrop glass pendants",
+      },
+      {
+        src: getAssetUrl('portfolio/the-charcoal-oak-sanctuary/img-02-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-charcoal-oak-sanctuary/img-02-thumb.webp'),
+        width: 1920,
+        height: 1116,
+        alt: "The Charcoal Oak Sanctuary, view 2 of 4: Perspective with end-of-bed bench seat, burnt-orange throw, and fluted paneling",
+        caption: "Perspective with end-of-bed bench seat, burnt-orange throw, and fluted paneling",
+      },
+      {
+        src: getAssetUrl('portfolio/the-charcoal-oak-sanctuary/img-03-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-charcoal-oak-sanctuary/img-03-thumb.webp'),
+        width: 1920,
+        height: 1064,
+        alt: "The Charcoal Oak Sanctuary, view 3 of 4: Angle toward floor-to-ceiling sheer drapery and polished marble floor reflections",
+        caption: "Angle toward floor-to-ceiling sheer drapery and polished marble floor reflections",
+      },
+      {
+        src: getAssetUrl('portfolio/the-charcoal-oak-sanctuary/img-04-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-charcoal-oak-sanctuary/img-04-thumb.webp'),
+        width: 1920,
+        height: 1087,
+        alt: "The Charcoal Oak Sanctuary, view 4 of 4: Bedside detail showing fluted timber paneling and rounded marble nightstand",
+        caption: "Bedside detail showing fluted timber paneling and rounded marble nightstand",
+      },
+    ],
+  },
+  {
+    id: 'proj-6',
+    slug: 'onyx-olive-bedroom-suite',
+    title: "Onyx & Olive Bedroom Suite",
+    category: "Contemporary Bedroom Interior",
+    tagline: "Matte olive panels accented with black-gold veined marble and integrated wardrobes.",
+    // [Year] TODO: Add exact completion year once provided by client
+    year: undefined,
+    // [Location] TODO: Add project location once provided by client
+    location: undefined,
+    imageSrc: getAssetUrl('portfolio/onyx-olive-bedroom-suite/cover.webp'),
+    images: [
+      {
+        src: getAssetUrl('portfolio/onyx-olive-bedroom-suite/img-01-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/onyx-olive-bedroom-suite/img-01-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Onyx & Olive Bedroom Suite, view 1 of 3: Front view of headboard with vertical black-gold marble slab and matte olive panels",
+        caption: "Front view of headboard with vertical black-gold marble slab and matte olive panels",
+      },
+      {
+        src: getAssetUrl('portfolio/onyx-olive-bedroom-suite/img-02-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/onyx-olive-bedroom-suite/img-02-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Onyx & Olive Bedroom Suite, view 2 of 3: Perspective displaying full-height built-in wardrobe wall in textured walnut finish",
+        caption: "Perspective displaying full-height built-in wardrobe wall in textured walnut finish",
+      },
+      {
+        src: getAssetUrl('portfolio/onyx-olive-bedroom-suite/img-03-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/onyx-olive-bedroom-suite/img-03-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Onyx & Olive Bedroom Suite, view 3 of 3: Angled perspective showcasing soft tray ceiling illumination and upholstered bed",
+        caption: "Angled perspective showcasing soft tray ceiling illumination and upholstered bed",
+      },
+    ],
+  },
+  {
+    id: 'proj-7',
+    slug: 'the-travertine-haven-suite',
+    title: "The Travertine Haven Suite",
+    category: "Master Bedroom Suite",
+    tagline: "Backlit travertine stone niche with integrated fluted millwork and makeup vanity.",
+    // [Year] TODO: Add exact completion year once provided by client
+    year: undefined,
+    // [Location] TODO: Add project location once provided by client
+    location: undefined,
+    imageSrc: getAssetUrl('portfolio/the-travertine-haven-suite/cover.webp'),
+    images: [
+      {
+        src: getAssetUrl('portfolio/the-travertine-haven-suite/img-01-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-travertine-haven-suite/img-01-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Travertine Haven Suite, view 1 of 3: Front elevation of backlit travertine stone niche, cognac upholstered bed, and vanity",
+        caption: "Front elevation of backlit travertine stone niche, cognac upholstered bed, and vanity",
+      },
+      {
+        src: getAssetUrl('portfolio/the-travertine-haven-suite/img-02-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-travertine-haven-suite/img-02-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Travertine Haven Suite, view 2 of 3: Close perspective of curved makeup dressing table, mirror, and rounded stool",
+        caption: "Close perspective of curved makeup dressing table, mirror, and rounded stool",
+      },
+      {
+        src: getAssetUrl('portfolio/the-travertine-haven-suite/img-03-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/the-travertine-haven-suite/img-03-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "The Travertine Haven Suite, view 3 of 3: Wide perspective showing floor-to-ceiling lacquered wardrobes and gold ceiling moulding",
+        caption: "Wide perspective showing floor-to-ceiling lacquered wardrobes and gold ceiling moulding",
+      },
+    ],
+  },
+  {
+    id: 'proj-8',
+    slug: 'geometric-wave-bedroom',
+    title: "Geometric Wave Bedroom",
+    category: "Boutique Bedroom Interior",
+    tagline: "Sculptural geometric wall reliefs paired with a rich rust-leather bed.",
+    // [Year] TODO: Add exact completion year once provided by client
+    year: undefined,
+    // [Location] TODO: Add project location once provided by client
+    location: undefined,
+    imageSrc: getAssetUrl('portfolio/geometric-wave-bedroom/cover.webp'),
+    images: [
+      {
+        src: getAssetUrl('portfolio/geometric-wave-bedroom/img-01-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/geometric-wave-bedroom/img-01-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Geometric Wave Bedroom, view 1 of 3: Frontal elevation of debossed geometric wall tiles and backlit metallic wave panel",
+        caption: "Frontal elevation of debossed geometric wall tiles and backlit metallic wave panel",
+      },
+      {
+        src: getAssetUrl('portfolio/geometric-wave-bedroom/img-02-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/geometric-wave-bedroom/img-02-thumb.webp'),
+        width: 1920,
+        height: 1133,
+        alt: "Geometric Wave Bedroom, view 2 of 3: Close-up view of sculptural ribbed white pendant light and rust leather winged bed",
+        caption: "Close-up view of sculptural ribbed white pendant light and rust leather winged bed",
+      },
+      {
+        src: getAssetUrl('portfolio/geometric-wave-bedroom/img-03-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/geometric-wave-bedroom/img-03-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Geometric Wave Bedroom, view 3 of 3: Perspective highlighting sheer curtain filtration and fluted wardrobe panels",
+        caption: "Perspective highlighting sheer curtain filtration and fluted wardrobe panels",
+      },
+    ],
+  },
+  {
+    id: 'proj-9',
+    slug: 'champagne-glass-suite',
+    title: "Champagne & Glass Suite",
+    category: "Luxury Master Bedroom",
+    tagline: "Recessed classical molding framed by smoked glass vitrines and brass sconces.",
+    // [Year] TODO: Add exact completion year once provided by client
+    year: undefined,
+    // [Location] TODO: Add project location once provided by client
+    location: undefined,
+    imageSrc: getAssetUrl('portfolio/champagne-glass-suite/cover.webp'),
+    images: [
+      {
+        src: getAssetUrl('portfolio/champagne-glass-suite/img-01-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/champagne-glass-suite/img-01-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Champagne & Glass Suite, view 1 of 3: Front elevation of multi-layered headboard molding with perimeter cove lighting",
+        caption: "Front elevation of multi-layered headboard molding with perimeter cove lighting",
+      },
+      {
+        src: getAssetUrl('portfolio/champagne-glass-suite/img-02-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/champagne-glass-suite/img-02-thumb.webp'),
+        width: 1920,
+        height: 1312,
+        alt: "Champagne & Glass Suite, view 2 of 3: Perspective showcasing full-height smoked glass wardrobe closet with interior lighting",
+        caption: "Perspective showcasing full-height smoked glass wardrobe closet with interior lighting",
+      },
+      {
+        src: getAssetUrl('portfolio/champagne-glass-suite/img-03-large.webp'),
+        thumbSrc: getAssetUrl('portfolio/champagne-glass-suite/img-03-thumb.webp'),
+        width: 1920,
+        height: 1080,
+        alt: "Champagne & Glass Suite, view 3 of 3: Bedside detail showing black marble vertical insets and minimalist brass linear sconces",
+        caption: "Bedside detail showing black marble vertical insets and minimalist brass linear sconces",
+      },
+    ],
+  },
+];

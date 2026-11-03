@@ -33,16 +33,21 @@ export interface ProcessStep {
 
 export interface ProjectGalleryImage {
   src: string;
+  thumbSrc?: string;
+  width?: number;
+  height?: number;
   alt: string;
   caption?: string;
 }
 
 export interface ProjectItem {
   id: string;
+  slug?: string;
   title: string;
   category: string;
-  year: string;
-  location: string;
+  tagline?: string;
+  year?: string;
+  location?: string;
   imageSrc: string;
   images?: ProjectGalleryImage[];
 }
