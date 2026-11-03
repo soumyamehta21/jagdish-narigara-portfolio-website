@@ -31,6 +31,12 @@ export interface ProcessStep {
   iconName: 'LayoutGrid' | 'PenTool' | 'Box' | 'Sparkles';
 }
 
+export interface ProjectGalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface ProjectItem {
   id: string;
   title: string;
@@ -38,6 +44,7 @@ export interface ProjectItem {
   year: string;
   location: string;
   imageSrc: string;
+  images?: ProjectGalleryImage[];
 }
 
 export interface MilestoneItem {

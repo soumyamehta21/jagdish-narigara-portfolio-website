@@ -189,6 +189,23 @@ export const projectsData: ProjectItem[] = [
     year: '2025',
     location: 'Metropolitan Tower',
     imageSrc: getAssetUrl('images/project-1.jpg'),
+    images: [
+      {
+        src: getAssetUrl('images/project-1.jpg'),
+        alt: 'The Sky Horizon Penthouse - Double-height living lounge',
+        caption: 'Double-height living space with panoramic skyline views and custom recessed architectural lighting.'
+      },
+      {
+        src: getAssetUrl('images/project-2.jpg'),
+        alt: 'The Sky Horizon Penthouse - Executive lounge & library nook',
+        caption: 'Integrated study lounge featuring tailored warm acoustic paneling and bespoke shelving.'
+      },
+      {
+        src: getAssetUrl('images/project-4.jpg'),
+        alt: 'The Sky Horizon Penthouse - Dining salon & bar',
+        caption: 'Curated dining area with minimalist stone table and floor-to-ceiling glass fenestration.'
+      }
+    ]
   },
   {
     id: 'proj-2',
@@ -197,6 +214,23 @@ export const projectsData: ProjectItem[] = [
     year: '2024',
     location: 'Hillside Reserve',
     imageSrc: getAssetUrl('images/project-2.jpg'),
+    images: [
+      {
+        src: getAssetUrl('images/project-2.jpg'),
+        alt: 'Minimalist Executive Lounge - Main courtyard & reflective pool',
+        caption: 'Monolithic concrete and glass pavilion overlooking calm courtyard water features.'
+      },
+      {
+        src: getAssetUrl('images/project-1.jpg'),
+        alt: 'Minimalist Executive Lounge - Interior view',
+        caption: 'Warm timber and micro-cement surfaces balanced with natural ambient perimeter glow.'
+      },
+      {
+        src: getAssetUrl('images/project-5.jpg'),
+        alt: 'Minimalist Executive Lounge - Private meeting room',
+        caption: 'Intimate conversation space with low-profile Japandi seating and organic stone textures.'
+      }
+    ]
   },
   {
     id: 'proj-3',
@@ -205,6 +239,23 @@ export const projectsData: ProjectItem[] = [
     year: '2024',
     location: 'Coastal Escarpment',
     imageSrc: getAssetUrl('images/project-3.jpg'),
+    images: [
+      {
+        src: getAssetUrl('images/project-3.jpg'),
+        alt: 'Serene Master Bedroom Suite - Architectural exterior & master wing',
+        caption: 'Seamless connection between bedroom terrace and private landscaped garden canopy.'
+      },
+      {
+        src: getAssetUrl('images/project-5.jpg'),
+        alt: 'Serene Master Bedroom Suite - Bedroom sleeping sanctuary',
+        caption: 'Muted natural linen fabrics, fluted timber feature wall, and soft concealed illumination.'
+      },
+      {
+        src: getAssetUrl('images/project-4.jpg'),
+        alt: 'Serene Master Bedroom Suite - En-suite dressing & lounge',
+        caption: 'Open dressing area with smoked glass wardrobes and terrazzo stone flooring.'
+      }
+    ]
   },
   {
     id: 'proj-4',
@@ -213,6 +264,23 @@ export const projectsData: ProjectItem[] = [
     year: '2023',
     location: 'Civic Cultural Center',
     imageSrc: getAssetUrl('images/project-4.jpg'),
+    images: [
+      {
+        src: getAssetUrl('images/project-4.jpg'),
+        alt: 'Lumina Contemporary Gallery - Curated living and dining space',
+        caption: 'Open-concept gallery interior combining Scandinavian minimalism with Italian marble accents.'
+      },
+      {
+        src: getAssetUrl('images/project-6.jpg'),
+        alt: 'Lumina Contemporary Gallery - Culinary display kitchen',
+        caption: 'Sculpted island with waterfall granite edges and professional chef-grade concealed fixtures.'
+      },
+      {
+        src: getAssetUrl('images/project-2.jpg'),
+        alt: 'Lumina Contemporary Gallery - Sculptural transition corridor',
+        caption: 'Architectural lighting sequence framing curated contemporary art installations.'
+      }
+    ]
   },
   {
     id: 'proj-5',
@@ -221,6 +289,23 @@ export const projectsData: ProjectItem[] = [
     year: '2023',
     location: 'Urban Sanctuary',
     imageSrc: getAssetUrl('images/project-5.jpg'),
+    images: [
+      {
+        src: getAssetUrl('images/project-5.jpg'),
+        alt: 'The Japandi Courtyard Suite - Serene living lounge',
+        caption: 'Harmony of Japanese wabi-sabi simplicity and Scandinavian functional ergonomics.'
+      },
+      {
+        src: getAssetUrl('images/project-3.jpg'),
+        alt: 'The Japandi Courtyard Suite - Zen garden view',
+        caption: 'Horizontal sightlines framing private bamboo courtyard and weathered stone water basin.'
+      },
+      {
+        src: getAssetUrl('images/project-1.jpg'),
+        alt: 'The Japandi Courtyard Suite - Tea alcove',
+        caption: 'Bespoke low-slung oak joinery with tatami mat insets and warm plaster wall finishes.'
+      }
+    ]
   },
   {
     id: 'proj-6',
@@ -229,6 +314,23 @@ export const projectsData: ProjectItem[] = [
     year: '2022',
     location: 'Lakeside Ridge',
     imageSrc: getAssetUrl('images/project-6.jpg'),
+    images: [
+      {
+        src: getAssetUrl('images/project-6.jpg'),
+        alt: 'Solstice Gourmet Kitchen & Bar - Culinary preparation zone',
+        caption: 'Precision commercial-grade copper fixtures and quartzite surfaces built for culinary mastery.'
+      },
+      {
+        src: getAssetUrl('images/project-4.jpg'),
+        alt: 'Solstice Gourmet Kitchen & Bar - Dining lounge & bar counter',
+        caption: 'Integrated wine storage, fluted glass vitrines, and custom bronze barstools.'
+      },
+      {
+        src: getAssetUrl('images/project-1.jpg'),
+        alt: 'Solstice Gourmet Kitchen & Bar - Social entertaining lounge',
+        caption: 'Open connectivity between the central kitchen island and the panoramic entertainment room.'
+      }
+    ]
   },
 ];
 

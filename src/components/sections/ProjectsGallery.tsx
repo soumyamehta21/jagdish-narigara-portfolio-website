@@ -1,76 +1,139 @@
-import React, { useRef, useMemo } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
+import { ChevronLeft, ChevronRight, Eye } from 'lucide-react';
 import { projectsData } from '../../data/siteData';
+import { ProjectItem } from '../../types';
 import { SectionHeader } from '../common/SectionHeader';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
+import { ProjectGalleryModal } from './ProjectGalleryModal';
 import styles from './ProjectsGallery.module.css';
 
 /**
  * Portfolio Gallery — Scroll-Driven Horizontal Slideshow
  *
- * Architecture:
- *   <section.outerWrapper>          ← tall (slideCount × 100vh), creates scroll runway
- *     <div.stickyViewport>          ← position:sticky; top:0; height:100vh — pins in view
- *       <header> …                  ← section title + nav controls
- *       <div.trackContainer>        ← overflow:hidden clip box
- *         <div.track>               ← flex row, translated via inline transform
- *           <article.card> × N
- *
- * The outer wrapper's height gives the browser enough scroll distance.
- * useScrollProgress(wrapperRef) returns 0→1 as the user scrolls through it.
- * We map that progress to a horizontal translateX on the track.
- * No scroll hijacking — pure native scroll + sticky + transform.
- *
- * prefers-reduced-motion: falls back to a plain vertical stack.
+ * Requirements satisfied:
+ *  1. Pinned container (position: sticky; top: var(--header-height); height: calc(100svh - var(--header-height)))
+ *  2. Travel distance calculated as: trackScrollWidth - viewportWidth + endInset
+ *     where endInset equals section's left content padding.
+ *  3. Last card ends fully visible with symmetrical spacing matching left padding; title never truncated.
+ *  4. Sticky wrapper height derived from travelDistance (stickyHeight + travelDistance),
+ *     releasing cleanly with zero empty gap.
+ *  5. ResizeObserver + font/image load listeners for responsive recalculations.
+ *  6. Every card is an accessible button opening a full lightbox modal gallery.
  */
 
 const SLIDE_COUNT = projectsData.length;
 
 export const ProjectsGallery: React.FC = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const progress = useScrollProgress(wrapperRef);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  // Derive the active slide index (0-based) from progress
+  const [headerHeight, setHeaderHeight] = useState<number>(72);
+  const [travelDistance, setTravelDistance] = useState<number>(0);
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  // Hook receives dynamic topOffset so progress maps 0→1 strictly during sticky lifespan
+  const progress = useScrollProgress(wrapperRef, headerHeight);
+
+  // Measure track scrollWidth and compute exact travel distance
+  const recalculateDimensions = useCallback(() => {
+    const track = trackRef.current;
+    const wrapper = wrapperRef.current;
+    if (!track || !wrapper) return;
+
+    // Dynamically measure fixed header height
+    const headerEl = document.querySelector('header');
+    const measuredHeader = headerEl ? headerEl.getBoundingClientRect().height : 72;
+    setHeaderHeight(measuredHeader);
+    document.documentElement.style.setProperty('--header-height', `${measuredHeader}px`);
+
+    // Read endInset from computed padding-left of track
+    const trackStyle = window.getComputedStyle(track);
+    const endInset = parseFloat(trackStyle.paddingLeft) || 32;
+
+    // Part A Requirement: trackScrollWidth - viewportWidth + endInset
+    const trackScrollWidth = track.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const maxTravel = Math.max(0, trackScrollWidth - viewportWidth + endInset);
+
+    setTravelDistance(maxTravel);
+
+    // Height of sticky zone
+    const stickyHeight = window.innerHeight - measuredHeader;
+    wrapper.style.height = `${stickyHeight + maxTravel}px`;
+  }, []);
+
+  // Set up listeners and ResizeObserver for reliable dimension calculation
+  useEffect(() => {
+    recalculateDimensions();
+
+    const track = trackRef.current;
+    const resizeObserver = new ResizeObserver(() => {
+      recalculateDimensions();
+    });
+
+    if (track) resizeObserver.observe(track);
+    if (wrapperRef.current) resizeObserver.observe(wrapperRef.current);
+
+    window.addEventListener('resize', recalculateDimensions, { passive: true });
+    window.addEventListener('orientationchange', recalculateDimensions, { passive: true });
+
+    // Recalculate once web fonts finish loading
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(recalculateDimensions);
+    }
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', recalculateDimensions);
+      window.removeEventListener('orientationchange', recalculateDimensions);
+    };
+  }, [recalculateDimensions]);
+
+  // Active slide index (0 to SLIDE_COUNT - 1)
   const activeIndex = useMemo(() => {
     if (SLIDE_COUNT <= 1) return 0;
     return Math.min(SLIDE_COUNT - 1, Math.round(progress * (SLIDE_COUNT - 1)));
   }, [progress]);
 
-  // The track translateX: at progress=0 show slide 0, at progress=1 show last slide.
-  // Each slide takes (100% / SLIDE_COUNT) of the track width.
-  // We shift by (progress * (SLIDE_COUNT - 1)) slides worth.
-  // Using percentage of the track's own width via CSS calc.
-  const translatePercent = useMemo(() => {
-    if (SLIDE_COUNT <= 1) return 0;
-    // Each card is (100 / SLIDE_COUNT)% of the track.
-    // To show card N, we translate by N * (100 / SLIDE_COUNT)%.
-    return progress * (SLIDE_COUNT - 1) * (100 / SLIDE_COUNT);
-  }, [progress]);
+  // Compute translateX: clamped between 0 and travelDistance
+  const translateX = useMemo(() => {
+    if (travelDistance <= 0) return 0;
+    return Math.max(0, Math.min(travelDistance, progress * travelDistance));
+  }, [travelDistance, progress]);
 
   const counterText = `${String(activeIndex + 1).padStart(2, '0')} / ${String(SLIDE_COUNT).padStart(2, '0')}`;
 
-  // Arrow buttons: scroll window by one slide's worth of vertical distance
+  // Smooth scroll by one slide distance
   const scrollBySlide = (direction: 'prev' | 'next') => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
-    const slideScrollHeight = (wrapper.offsetHeight - window.innerHeight) / Math.max(1, SLIDE_COUNT - 1);
-    const delta = direction === 'next' ? slideScrollHeight : -slideScrollHeight;
+    if (travelDistance <= 0) return;
+    const slideStep = travelDistance / Math.max(1, SLIDE_COUNT - 1);
+    const delta = direction === 'next' ? slideStep : -slideStep;
     window.scrollBy({ top: delta, behavior: 'smooth' });
+  };
+
+  const handleOpenGallery = (project: ProjectItem) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseGallery = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <section id="project" aria-label="Portfolio Showcase">
-      {/*
-        Outer wrapper — its height creates the scroll runway.
-        Each slide gets 100vh of scroll travel.
-      */}
-      <div
-        ref={wrapperRef}
-        className={styles.outerWrapper}
-        style={{ height: `${SLIDE_COUNT * 100}vh` }}
-      >
-        {/* Sticky viewport — stays pinned while scrolling through wrapper */}
-        <div className={styles.stickyViewport}>
+      {/* Outer wrapper: height dynamically set to (stickyHeight + travelDistance) */}
+      <div ref={wrapperRef} className={styles.outerWrapper}>
+        {/* Sticky Viewport: pinned below navbar */}
+        <div
+          className={styles.stickyViewport}
+          style={{
+            top: `${headerHeight}px`,
+            height: `calc(100vh - ${headerHeight}px)`,
+            maxHeight: `calc(100vh - ${headerHeight}px)`,
+          }}
+        >
           {/* Header row */}
           <div className={styles.container}>
             <div className={styles.headerRow}>
@@ -94,6 +157,7 @@ export const ProjectsGallery: React.FC = () => {
                   type="button"
                   className={styles.navBtn}
                   onClick={() => scrollBySlide('prev')}
+                  disabled={activeIndex === 0}
                   aria-label="Previous project"
                 >
                   <ChevronLeft size={22} />
@@ -102,6 +166,7 @@ export const ProjectsGallery: React.FC = () => {
                   type="button"
                   className={styles.navBtn}
                   onClick={() => scrollBySlide('next')}
+                  disabled={activeIndex === SLIDE_COUNT - 1}
                   aria-label="Next project"
                 >
                   <ChevronRight size={22} />
@@ -110,38 +175,55 @@ export const ProjectsGallery: React.FC = () => {
             </div>
           </div>
 
-          {/* Card track */}
+          {/* Card Track Viewport */}
           <div className={styles.trackContainer}>
             <div
+              ref={trackRef}
               className={styles.track}
-              style={{ transform: `translate3d(-${translatePercent}%, 0, 0)` }}
+              style={{
+                transform: `translate3d(-${translateX}px, 0, 0)`,
+              }}
             >
-              {projectsData.map((project, i) => (
-                <article
-                  key={project.id}
-                  className={`${styles.card} ${i === activeIndex ? styles.cardActive : ''}`}
-                >
-                  <div className={styles.cardInner}>
-                    <img
-                      src={project.imageSrc}
-                      alt={project.title}
-                      className={styles.cardImage}
-                      loading={i < 3 ? 'eager' : 'lazy'}
-                      width="800"
-                      height="600"
-                    />
-                    <div className={styles.cardGradient} />
-                    <div className={styles.cardContent}>
-                      <div className={styles.metaRow}>
-                        <span className={styles.category}>{project.category}</span>
-                        <span className={styles.year}>{project.year}</span>
+              {projectsData.map((project, i) => {
+                const isActive = i === activeIndex;
+                return (
+                  <button
+                    key={project.id}
+                    type="button"
+                    className={`${styles.card} ${isActive ? styles.cardActive : ''}`}
+                    onClick={() => handleOpenGallery(project)}
+                    aria-label={`View ${project.title} gallery (${project.category}, ${project.year})`}
+                  >
+                    <div className={styles.cardInner}>
+                      <img
+                        src={project.imageSrc}
+                        alt=""
+                        className={styles.cardImage}
+                        loading={i < 3 ? 'eager' : 'lazy'}
+                        onLoad={recalculateDimensions}
+                        width="800"
+                        height="600"
+                      />
+                      <div className={styles.cardGradient} />
+
+                      {/* Interactive View Gallery Pill */}
+                      <div className={styles.viewGalleryPill} aria-hidden="true">
+                        <Eye size={14} />
+                        <span>View Gallery</span>
                       </div>
-                      <h3 className={styles.cardTitle}>{project.title}</h3>
-                      <p className={styles.location}>{project.location}</p>
+
+                      <div className={styles.cardContent}>
+                        <div className={styles.metaRow}>
+                          <span className={styles.category}>{project.category}</span>
+                          <span className={styles.year}>{project.year}</span>
+                        </div>
+                        <h3 className={styles.cardTitle}>{project.title}</h3>
+                        <p className={styles.location}>{project.location}</p>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -151,6 +233,13 @@ export const ProjectsGallery: React.FC = () => {
           </p>
         </div>
       </div>
+
+      {/* Accessible Lightbox Modal */}
+      <ProjectGalleryModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseGallery}
+      />
     </section>
   );
 };

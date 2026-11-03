@@ -1,17 +1,20 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
 
 /**
- * useScrollProgress – returns a 0→1 progress value based on how far
- * `wrapperRef` has been scrolled through.
+ * useScrollProgress – calculates a normalized 0→1 progress value based on how far
+ * `wrapperRef` has been scrolled through while pinned at `topOffset`.
  *
- * progress = 0  → top of wrapper just reached viewport top
- * progress = 1  → bottom of wrapper just reached viewport bottom
+ * progress = 0  → top of wrapper hits topOffset (sticky pins)
+ * progress = 1  → bottom of wrapper hits viewport bottom (sticky unpins)
  *
- * Uses a passive scroll listener throttled by rAF — no scroll hijacking.
+ * Uses a passive scroll listener throttled by rAF — strictly native scrolling.
  */
-export function useScrollProgress(wrapperRef: React.RefObject<HTMLElement | null>) {
-  const [progress, setProgress] = useState(0);
-  const rafId = useRef(0);
+export function useScrollProgress(
+  wrapperRef: React.RefObject<HTMLElement | null>,
+  topOffset = 0
+) {
+  const [progress, setProgress] = useState<number>(0);
+  const rafId = useRef<number>(0);
 
   const update = useCallback(() => {
     cancelAnimationFrame(rafId.current);
@@ -20,29 +23,25 @@ export function useScrollProgress(wrapperRef: React.RefObject<HTMLElement | null
       if (!el) return;
 
       const rect = el.getBoundingClientRect();
-      const wh = window.innerHeight;
+      const vh = window.innerHeight;
+      const stickyHeight = vh - topOffset;
 
-      // scrollable range: from when the top of the wrapper hits the viewport top
-      // to when the bottom of the wrapper hits the viewport bottom.
-      // That's (el.offsetHeight - wh) pixels of vertical scroll travel.
-      const scrollable = el.offsetHeight - wh;
+      const scrollable = el.offsetHeight - stickyHeight;
       if (scrollable <= 0) {
         setProgress(0);
         return;
       }
 
-      // How far we've consumed: rect.top starts at some positive value,
-      // becomes 0 when wrapper top reaches viewport top, goes negative as we scroll.
-      const consumed = -rect.top;
+      // Progress begins when rect.top hits topOffset, finishes when rect.bottom hits vh
+      const consumed = topOffset - rect.top;
       const p = Math.max(0, Math.min(1, consumed / scrollable));
       setProgress(p);
     });
-  }, [wrapperRef]);
+  }, [wrapperRef, topOffset]);
 
   useEffect(() => {
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update, { passive: true });
-    // Initial calculation
     update();
 
     return () => {

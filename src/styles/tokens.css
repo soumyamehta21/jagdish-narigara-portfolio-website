@@ -70,6 +70,7 @@
   --text-marquee: clamp(3.5rem, 9vw, 7rem);
 
   /* Spacing Tokens */
+  --header-height: 72px;
   --spacing-section-y: clamp(3.5rem, 6vw, 6rem);
   --spacing-section-x: clamp(1.25rem, 5vw, 5rem);
   --container-max-width: 1440px;
