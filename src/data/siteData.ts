@@ -193,7 +193,7 @@ export const projectsData: ProjectItem[] = [
       {
         src: getAssetUrl('images/project-1.jpg'),
         alt: 'The Sky Horizon Penthouse - Double-height living lounge',
-        caption: 'Double-height living space with panoramic skyline views and custom recessed architectural lighting.'
+        caption: 'Double-height living space with panoramic skyline views and custom recessed ambient cove lighting.'
       },
       {
         src: getAssetUrl('images/project-2.jpg'),
@@ -242,7 +242,7 @@ export const projectsData: ProjectItem[] = [
     images: [
       {
         src: getAssetUrl('images/project-3.jpg'),
-        alt: 'Serene Master Bedroom Suite - Architectural exterior & master wing',
+        alt: 'Serene Master Bedroom Suite - Master bedroom wing & terrace transition',
         caption: 'Seamless connection between bedroom terrace and private landscaped garden canopy.'
       },
       {
@@ -278,7 +278,7 @@ export const projectsData: ProjectItem[] = [
       {
         src: getAssetUrl('images/project-2.jpg'),
         alt: 'Lumina Contemporary Gallery - Sculptural transition corridor',
-        caption: 'Architectural lighting sequence framing curated contemporary art installations.'
+        caption: 'Curated interior lighting sequence framing contemporary art installations.'
       }
     ]
   },
@@ -353,7 +353,7 @@ export const milestonesData: MilestoneItem[] = [
     date: '2026',
     title: 'Beyond Homes: Healthcare & Workspaces',
     description: 'Expands into commercial and healthcare design, shaping hospitals and a modern IT office.',
-    tags: ['Blissmother Hospital', 'Auromax Hospital', 'IT Office, Times Square Grand'],
+    tags: ['Blissmother Women Hospital', 'Oromax Dental Hospital', 'IT Office, Times Square Grand'],
   },
   {
     id: 'milestone-4',
@@ -389,14 +389,14 @@ export const awardsData: AwardItem[] = [
     id: 'award-1',
     year: '2026',
     category: 'Commercial & Healthcare Interior',
-    title: 'Healthcare Architecture & Planning Distinction',
-    project: 'Blissmother & Auromax Hospitals',
+    title: 'Healthcare Interior & Space Planning Distinction',
+    project: 'Blissmother Women Hospital & Oromax Dental Hospital',
     description: 'Recognized for clinical workflow ergonomics, soothing patient-centric aesthetics, and sterile space compliance.'
   },
   {
     id: 'award-2',
     year: '2026',
-    category: 'Private Residential Architecture',
+    category: 'Private Residential Interiors',
     title: 'Excellence in Luxury Bungalow Spatial Design',
     project: 'The Aviraat Bungalows, Hastinapur & Shilp Residency',
     description: 'Honored for tailored millwork detailing, expansive spatial flow, and harmonized interior materiality.'

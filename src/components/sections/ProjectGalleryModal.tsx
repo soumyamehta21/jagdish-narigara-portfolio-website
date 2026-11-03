@@ -308,3 +308,4 @@ export const ProjectGalleryModal: React.FC<ProjectGalleryModalProps> = ({
     document.body
   );
 };
+

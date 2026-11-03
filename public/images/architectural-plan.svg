@@ -67,7 +67,7 @@
   <line x1="550" y1="465" x2="680" y2="465" stroke="#e0e0e0" stroke-width="1" />
   <line x1="550" y1="485" x2="680" y2="485" stroke="#e0e0e0" stroke-width="1" />
 
-  <!-- Architectural Dimension Lines & Annotations -->
+  <!-- Interior Dimension Lines & Annotations -->
   <g stroke="#999" stroke-width="1">
     <!-- Top horizontal dimension -->
     <line x1="80" y1="35" x2="720" y2="35" />
@@ -82,8 +82,8 @@
     <text x="18" y="310" font-family="'Courier New', monospace" font-size="11" fill="#666" font-weight="600" transform="rotate(-90 40 310)">18,200 MM</text>
   </g>
 
-  <!-- Architectural Title Block in bottom right -->
+  <!-- Title Block in bottom right -->
   <rect x="510" y="525" width="200" height="45" fill="#fff" stroke="#333" stroke-width="1.5" />
-  <text x="520" y="542" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#111" letter-spacing="0.5">LEVEL 01 ARCHITECTURAL PLAN</text>
+  <text x="520" y="542" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#111" letter-spacing="0.5">LEVEL 01 INTERIOR LAYOUT PLAN</text>
   <text x="520" y="558" font-family="'Courier New', monospace" font-size="8" fill="#666">SCALE: 1:100  |  REV: 04  |  ATELIER</text>
 </svg>
