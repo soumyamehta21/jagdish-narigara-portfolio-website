@@ -1,158 +1,191 @@
-import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { projectsData } from '../../data/siteData';
 import { SectionHeader } from '../common/SectionHeader';
-import { useReducedMotion } from '../../hooks/useReducedMotion';
 import styles from './ProjectsGallery.module.css';
 
 export const ProjectsGallery: React.FC = () => {
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-  const [isPaused, setIsPaused] = useState<boolean>(false);
-  const pauseTimeoutRef = useRef<number | null>(null);
-  const prefersReduced = useReducedMotion();
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [containerHeight, setContainerHeight] = useState<number>(2400);
+  const [currentIndex, setCurrentIndex] = useState<number>(1);
 
-  // Duplicate items for infinite seamless scroll
-  const displayProjects = useMemo(() => [...projectsData, ...projectsData], []);
+  // Measure track width and compute needed vertical scroll distance
+  const updateDimensions = useCallback(() => {
+    if (!trackRef.current) return;
+    const trackWidth = trackRef.current.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const maxTranslate = Math.max(0, trackWidth - viewportWidth);
 
-  // Continuous auto-scroll loop
+    // 1.15 scrollFactor gives a balanced, natural trackpad translation speed
+    const scrollDistance = maxTranslate * 1.15;
+    setContainerHeight(window.innerHeight + scrollDistance);
+  }, []);
+
   useEffect(() => {
-    if (prefersReduced) return;
+    updateDimensions();
 
-    let animationFrameId: number;
-    const speed = 0.85; // Slow, elegant luxury gliding speed (~50px per second)
+    const resizeObserver = new ResizeObserver(() => {
+      updateDimensions();
+    });
 
-    const step = () => {
-      const track = scrollContainerRef.current;
-      if (track && !isPaused) {
-        const halfWidth = track.scrollWidth / 2;
-        if (halfWidth > 0 && track.scrollLeft >= halfWidth) {
-          track.scrollLeft -= halfWidth;
-        }
-        track.scrollLeft += speed;
-      }
-      animationFrameId = requestAnimationFrame(step);
-    };
-
-    animationFrameId = requestAnimationFrame(step);
+    if (trackRef.current) {
+      resizeObserver.observe(trackRef.current);
+    }
+    window.addEventListener('resize', updateDimensions);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      if (pauseTimeoutRef.current) window.clearTimeout(pauseTimeoutRef.current);
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateDimensions);
     };
-  }, [isPaused, prefersReduced]);
+  }, [updateDimensions]);
 
+  // Synchronize window vertical scroll with horizontal track translation
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!sectionRef.current || !trackRef.current) {
+            ticking = false;
+            return;
+          }
+
+          const rect = sectionRef.current.getBoundingClientRect();
+          const scrollDistance = sectionRef.current.offsetHeight - window.innerHeight;
+
+          if (scrollDistance > 0) {
+            const currentY = -rect.top;
+            const progress = Math.max(0, Math.min(1, currentY / scrollDistance));
+
+            const trackWidth = trackRef.current.scrollWidth;
+            const viewportWidth = window.innerWidth;
+            const maxTranslate = Math.max(0, trackWidth - viewportWidth);
+
+            const translateX = progress * maxTranslate;
+            trackRef.current.style.transform = `translate3d(-${translateX}px, 0, 0)`;
+
+            // Update current slide index indicator (1 to N)
+            const activeIdx = Math.min(
+              projectsData.length,
+              Math.floor(progress * (projectsData.length - 1)) + 1
+            );
+            setCurrentIndex(activeIdx);
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Chevron click jumps one card horizontally by scrolling the window vertically
   const scroll = useCallback((direction: 'left' | 'right') => {
-    const track = scrollContainerRef.current;
-    if (!track) return;
+    if (!sectionRef.current || !trackRef.current) return;
+    const trackWidth = trackRef.current.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const maxTranslate = Math.max(0, trackWidth - viewportWidth);
+    const scrollDistance = sectionRef.current.offsetHeight - window.innerHeight;
 
-    // Pause briefly on manual navigation so the user can inspect their chosen card
-    setIsPaused(true);
-    if (pauseTimeoutRef.current) window.clearTimeout(pauseTimeoutRef.current);
-    pauseTimeoutRef.current = window.setTimeout(() => {
-      setIsPaused(false);
-    }, 4500);
+    if (scrollDistance <= 0 || maxTranslate <= 0) return;
 
-    const halfWidth = track.scrollWidth / 2;
-    const cardScrollAmount = 468; // 440px card + 28px gap
-    const scrollDelta = direction === 'left' ? -cardScrollAmount : cardScrollAmount;
+    // Card width (approx 440px + 28px gap)
+    const cardStep = 468;
+    const verticalStep = (cardStep / maxTranslate) * scrollDistance;
 
-    // Prevent hitting hard left boundary when scrolling left
-    if (direction === 'left' && track.scrollLeft < cardScrollAmount) {
-      track.scrollLeft += halfWidth;
-    } else if (direction === 'right' && track.scrollLeft >= halfWidth) {
-      track.scrollLeft -= halfWidth;
-    }
-
-    track.scrollBy({
-      left: scrollDelta,
+    window.scrollBy({
+      top: direction === 'right' ? verticalStep : -verticalStep,
       behavior: 'smooth',
     });
   }, []);
 
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
-
-  const handleTouchStart = () => setIsPaused(true);
-  const handleTouchEnd = () => {
-    if (pauseTimeoutRef.current) window.clearTimeout(pauseTimeoutRef.current);
-    pauseTimeoutRef.current = window.setTimeout(() => {
-      setIsPaused(false);
-    }, 2500);
-  };
-
   return (
-    <section id="project" className={styles.projectsSection} aria-label="Portfolio Showcase">
-      <div className={styles.container}>
-        {/* Header with Navigation Controls */}
-        <div className={styles.headerWrapper}>
-          <SectionHeader
-            eyebrow="Portfolio Showcase"
-            heading={<>The Proof is in <br />The Portfolio</>}
-            description="Explore a curated portfolio of interior transformations, custom living environments, and photorealistic 3D visualizations."
-            layout="split"
-          />
+    <section
+      id="project"
+      ref={sectionRef}
+      className={styles.stickySection}
+      style={{ height: `${containerHeight}px` }}
+      aria-label="Portfolio Showcase"
+    >
+      <div className={styles.stickyWrapper}>
+        <div className={styles.container}>
+          {/* Header with Navigation Controls */}
+          <div className={styles.headerWrapper}>
+            <SectionHeader
+              eyebrow="Portfolio Showcase"
+              heading={<>The Proof is in <br />The Portfolio</>}
+              description="Explore a curated portfolio of interior transformations, custom living environments, and photorealistic 3D visualizations."
+              layout="split"
+            />
 
-          <div className={styles.navControls} aria-label="Gallery Navigation">
-            <button
-              type="button"
-              className={styles.controlBtn}
-              onClick={() => scroll('left')}
-              aria-label="Scroll left in project gallery"
-            >
-              <ChevronLeft size={22} />
-            </button>
-            <button
-              type="button"
-              className={styles.controlBtn}
-              onClick={() => scroll('right')}
-              aria-label="Scroll right in project gallery"
-            >
-              <ChevronRight size={22} />
-            </button>
+            <div className={styles.navControls} aria-label="Gallery Navigation">
+              <span className={styles.slideCounter} aria-live="polite">
+                {String(currentIndex).padStart(2, '0')} / {String(projectsData.length).padStart(2, '0')}
+              </span>
+              <button
+                type="button"
+                className={styles.controlBtn}
+                onClick={() => scroll('left')}
+                aria-label="Scroll left in project gallery"
+              >
+                <ChevronLeft size={22} />
+              </button>
+              <button
+                type="button"
+                className={styles.controlBtn}
+                onClick={() => scroll('right')}
+                aria-label="Scroll right in project gallery"
+              >
+                <ChevronRight size={22} />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Horizontal Scroll Track with Auto-Scroll & Hover Pause */}
-      <div
-        className={styles.galleryWrapper}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div
-          ref={scrollContainerRef}
-          className={styles.horizontalTrack}
-          tabIndex={0}
-          role="region"
-          aria-label="Horizontal scrollable list of interior design projects"
-        >
-          {displayProjects.map((project, index) => (
-            <article key={`${project.id}-${index}`} className={styles.projectCard}>
-              <div className={styles.cardInner}>
-                <img
-                  src={project.imageSrc}
-                  alt={project.title}
-                  className={styles.projectImage}
-                  loading={index < 4 ? 'eager' : 'lazy'}
-                  width="800"
-                  height="600"
-                />
-                <div className={styles.cardGradient} />
+        {/* Horizontal Track Translated by Trackpad Vertical Scroll */}
+        <div className={styles.galleryViewport}>
+          <div
+            ref={trackRef}
+            className={styles.horizontalTrack}
+            tabIndex={0}
+            role="region"
+            aria-label="Trackpad-driven scrollable list of interior design projects"
+          >
+            {projectsData.map((project, index) => (
+              <article key={project.id} className={styles.projectCard}>
+                <div className={styles.cardInner}>
+                  <img
+                    src={project.imageSrc}
+                    alt={project.title}
+                    className={styles.projectImage}
+                    loading={index < 3 ? 'eager' : 'lazy'}
+                    width="800"
+                    height="600"
+                  />
+                  <div className={styles.cardGradient} />
 
-                {/* Floating Content Pill */}
-                <div className={styles.cardContent}>
-                  <div className={styles.metaRow}>
-                    <span className={styles.category}>{project.category}</span>
-                    <span className={styles.year}>{project.year}</span>
+                  {/* Content Overlay */}
+                  <div className={styles.cardContent}>
+                    <div className={styles.metaRow}>
+                      <span className={styles.category}>{project.category}</span>
+                      <span className={styles.year}>{project.year}</span>
+                    </div>
+                    <h3 className={styles.projectTitle}>{project.title}</h3>
+                    <p className={styles.location}>{project.location}</p>
                   </div>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.location}>{project.location}</p>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
