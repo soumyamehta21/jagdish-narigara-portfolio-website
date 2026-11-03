@@ -1,124 +1,126 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { projectsData } from '../../data/siteData';
 import { SectionHeader } from '../common/SectionHeader';
 import styles from './ProjectsGallery.module.css';
 
+/**
+ * Portfolio Gallery — Scroll-Hijacked Horizontal Slideshow
+ *
+ * How it works:
+ *  1. The <section> is made TALL: its height = 100vh + (total track width - viewport width).
+ *     This gives us the exact scroll distance needed to slide all cards across.
+ *  2. The inner `.stickyPane` is `position:sticky; top:0; height:100vh; overflow:hidden`.
+ *     It stays pinned while the user is scrolling through the section.
+ *  3. A rAF-based scroll listener maps vertical scroll progress → horizontal translateX.
+ *     Transform is written directly to the DOM (no React state, no CSS transition)
+ *     so it tracks the trackpad 1-to-1 with zero lag.
+ *  4. When the user has scrolled past all cards the section ends naturally and
+ *     normal page scroll resumes (unsticks automatically).
+ */
 export const ProjectsGallery: React.FC = () => {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const [containerHeight, setContainerHeight] = useState<number>(2400);
-  const [currentIndex, setCurrentIndex] = useState<number>(1);
+  const sectionRef  = useRef<HTMLElement>(null);
+  const stickyRef   = useRef<HTMLDivElement>(null);
+  const trackRef    = useRef<HTMLDivElement>(null);
+  const counterRef  = useRef<HTMLSpanElement>(null);
+  const rafRef      = useRef<number>(0);
 
-  // Measure track width and compute needed vertical scroll distance
-  const updateDimensions = useCallback(() => {
-    if (!trackRef.current) return;
-    const trackWidth = trackRef.current.scrollWidth;
-    const viewportWidth = window.innerWidth;
-    const maxTranslate = Math.max(0, trackWidth - viewportWidth);
+  /* ─── Recalculate section height so sticky zone is exactly right ─────── */
+  const setSectionHeight = useCallback(() => {
+    const section = sectionRef.current;
+    const track   = trackRef.current;
+    if (!section || !track) return;
 
-    // 1.15 scrollFactor gives a balanced, natural trackpad translation speed
-    const scrollDistance = maxTranslate * 1.15;
-    setContainerHeight(window.innerHeight + scrollDistance);
+    const maxTranslate = Math.max(0, track.scrollWidth - window.innerWidth);
+    section.style.height = `${window.innerHeight + maxTranslate}px`;
   }, []);
 
-  useEffect(() => {
-    updateDimensions();
+  /* ─── Scroll handler — maps vertical progress → horizontal translateX ── */
+  const onScroll = useCallback(() => {
+    cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      const section = sectionRef.current;
+      const track   = trackRef.current;
+      const counter = counterRef.current;
+      if (!section || !track) return;
 
-    const resizeObserver = new ResizeObserver(() => {
-      updateDimensions();
-    });
+      const rect = section.getBoundingClientRect();
 
-    if (trackRef.current) {
-      resizeObserver.observe(trackRef.current);
-    }
-    window.addEventListener('resize', updateDimensions);
+      // How many px of vertical scroll are left inside the section
+      const scrollable = section.offsetHeight - window.innerHeight;
+      if (scrollable <= 0) return;
 
-    return () => {
-      resizeObserver.disconnect();
-      window.removeEventListener('resize', updateDimensions);
-    };
-  }, [updateDimensions]);
+      // Vertical offset from the top of the section (clamped to [0, scrollable])
+      const consumed = Math.max(0, Math.min(scrollable, -rect.top));
+      const progress = consumed / scrollable;                  // 0 → 1
 
-  // Synchronize window vertical scroll with horizontal track translation
-  useEffect(() => {
-    let ticking = false;
+      const maxTranslate = Math.max(0, track.scrollWidth - window.innerWidth);
+      const translateX   = progress * maxTranslate;
 
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (!sectionRef.current || !trackRef.current) {
-            ticking = false;
-            return;
-          }
+      // Write transform directly — no React re-render, no CSS transition lag
+      track.style.transform = `translate3d(-${translateX}px, 0, 0)`;
 
-          const rect = sectionRef.current.getBoundingClientRect();
-          const scrollDistance = sectionRef.current.offsetHeight - window.innerHeight;
-
-          if (scrollDistance > 0) {
-            const currentY = -rect.top;
-            const progress = Math.max(0, Math.min(1, currentY / scrollDistance));
-
-            const trackWidth = trackRef.current.scrollWidth;
-            const viewportWidth = window.innerWidth;
-            const maxTranslate = Math.max(0, trackWidth - viewportWidth);
-
-            const translateX = progress * maxTranslate;
-            trackRef.current.style.transform = `translate3d(-${translateX}px, 0, 0)`;
-
-            // Update current slide index indicator (1 to N)
-            const activeIdx = Math.min(
-              projectsData.length,
-              Math.floor(progress * (projectsData.length - 1)) + 1
-            );
-            setCurrentIndex(activeIdx);
-          }
-
-          ticking = false;
-        });
-        ticking = true;
+      // Update slide counter
+      if (counter) {
+        const total   = projectsData.length;
+        const current = Math.min(total, Math.round(progress * (total - 1)) + 1);
+        counter.textContent = `${String(current).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
       }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  // Chevron click jumps one card horizontally by scrolling the window vertically
-  const scroll = useCallback((direction: 'left' | 'right') => {
-    if (!sectionRef.current || !trackRef.current) return;
-    const trackWidth = trackRef.current.scrollWidth;
-    const viewportWidth = window.innerWidth;
-    const maxTranslate = Math.max(0, trackWidth - viewportWidth);
-    const scrollDistance = sectionRef.current.offsetHeight - window.innerHeight;
-
-    if (scrollDistance <= 0 || maxTranslate <= 0) return;
-
-    // Card width (approx 440px + 28px gap)
-    const cardStep = 468;
-    const verticalStep = (cardStep / maxTranslate) * scrollDistance;
-
-    window.scrollBy({
-      top: direction === 'right' ? verticalStep : -verticalStep,
-      behavior: 'smooth',
     });
   }, []);
 
+  /* ─── Mount / unmount ────────────────────────────────────────────────── */
+  useEffect(() => {
+    // Wait for fonts / images to load so scrollWidth is accurate
+    const init = () => {
+      setSectionHeight();
+      onScroll();
+    };
+
+    window.addEventListener('load',   init,          { once: true });
+    window.addEventListener('resize', setSectionHeight, { passive: true });
+    window.addEventListener('scroll', onScroll,      { passive: true });
+
+    // Also run now (fonts may already be loaded)
+    init();
+
+    return () => {
+      window.removeEventListener('resize', setSectionHeight);
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, [setSectionHeight, onScroll]);
+
+  /* ─── Arrow buttons: jump one card width worth of vertical scroll ────── */
+  const scrollByCard = useCallback((direction: 'left' | 'right') => {
+    const section = sectionRef.current;
+    const track   = trackRef.current;
+    if (!section || !track) return;
+
+    const scrollable   = section.offsetHeight - window.innerHeight;
+    const maxTranslate = Math.max(0, track.scrollWidth - window.innerWidth);
+    if (scrollable <= 0 || maxTranslate <= 0) return;
+
+    // One card (440px + 2rem gap ≈ 472px) expressed as vertical pixels
+    const cardW       = 440 + 32;
+    const verticalPx  = (cardW / maxTranslate) * scrollable;
+
+    window.scrollBy({ top: direction === 'right' ? verticalPx : -verticalPx, behavior: 'smooth' });
+  }, []);
+
+  /* ─── Render ─────────────────────────────────────────────────────────── */
   return (
     <section
       id="project"
       ref={sectionRef}
-      className={styles.stickySection}
-      style={{ height: `${containerHeight}px` }}
+      className={styles.gallerySection}
       aria-label="Portfolio Showcase"
     >
-      <div className={styles.stickyWrapper}>
+      {/* Sticky pane that pins for the duration of the section */}
+      <div ref={stickyRef} className={styles.stickyPane}>
+
+        {/* Header */}
         <div className={styles.container}>
-          {/* Header with Navigation Controls */}
           <div className={styles.headerWrapper}>
             <SectionHeader
               eyebrow="Portfolio Showcase"
@@ -128,22 +130,27 @@ export const ProjectsGallery: React.FC = () => {
             />
 
             <div className={styles.navControls} aria-label="Gallery Navigation">
-              <span className={styles.slideCounter} aria-live="polite">
-                {String(currentIndex).padStart(2, '0')} / {String(projectsData.length).padStart(2, '0')}
+              <span
+                ref={counterRef}
+                className={styles.slideCounter}
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                01 / {String(projectsData.length).padStart(2, '0')}
               </span>
               <button
                 type="button"
                 className={styles.controlBtn}
-                onClick={() => scroll('left')}
-                aria-label="Scroll left in project gallery"
+                onClick={() => scrollByCard('left')}
+                aria-label="Previous project"
               >
                 <ChevronLeft size={22} />
               </button>
               <button
                 type="button"
                 className={styles.controlBtn}
-                onClick={() => scroll('right')}
-                aria-label="Scroll right in project gallery"
+                onClick={() => scrollByCard('right')}
+                aria-label="Next project"
               >
                 <ChevronRight size={22} />
               </button>
@@ -151,14 +158,13 @@ export const ProjectsGallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Horizontal Track Translated by Trackpad Vertical Scroll */}
+        {/* Horizontally-translated card track */}
         <div className={styles.galleryViewport}>
           <div
             ref={trackRef}
             className={styles.horizontalTrack}
-            tabIndex={0}
             role="region"
-            aria-label="Trackpad-driven scrollable list of interior design projects"
+            aria-label="Interior design project gallery — scroll to browse"
           >
             {projectsData.map((project, index) => (
               <article key={project.id} className={styles.projectCard}>
@@ -172,8 +178,6 @@ export const ProjectsGallery: React.FC = () => {
                     height="600"
                   />
                   <div className={styles.cardGradient} />
-
-                  {/* Content Overlay */}
                   <div className={styles.cardContent}>
                     <div className={styles.metaRow}>
                       <span className={styles.category}>{project.category}</span>
@@ -187,6 +191,11 @@ export const ProjectsGallery: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Subtle scroll-hint hint at the bottom of the pane */}
+        <p className={styles.scrollHint} aria-hidden="true">
+          Scroll to explore projects
+        </p>
       </div>
     </section>
   );
