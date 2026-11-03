@@ -91,7 +91,8 @@ p {
 /* Layout Utilities */
 .site-wrapper {
   width: 100%;
-  overflow-x: hidden;
+  /* Use clip instead of hidden — hidden breaks position:sticky on descendants */
+  overflow-x: clip;
   position: relative;
 }
 

@@ -1,27 +1,31 @@
-/* ─── Section wrapper — height set dynamically by JS ─────────────────────── */
-.gallerySection {
-  background-color: var(--color-bg-primary);
-  width: 100%;
+/* ═══════════════════════════════════════════════════════════════════════════
+   ProjectsGallery – Scroll-Driven Horizontal Slideshow
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Outer wrapper: creates the tall scroll runway ────────────────────────── */
+.outerWrapper {
   position: relative;
-  /* height is written to sectionRef.current.style.height in JS */
+  width: 100%;
+  /* height is set inline: slideCount × 100vh */
 }
 
-/* ─── Sticky pane — stays pinned while user scrolls through the section ───── */
-.stickyPane {
+/* ── Sticky viewport: pins inside the wrapper while the user scrolls ──────── */
+.stickyViewport {
   position: sticky;
   top: 0;
-  width: 100%;
   height: 100vh;
-  max-height: 100vh;
-  overflow: hidden;
+  height: 100svh; /* mobile-safe viewport height */
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: clamp(1rem, 3vh, 2.5rem) 0;
   box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--color-bg-primary);
 }
 
-/* ─── Shared container ────────────────────────────────────────────────────── */
+/* ── Container (max-width + padding) ──────────────────────────────────────── */
 .container {
   max-width: var(--container-max-width);
   width: 100%;
@@ -30,22 +34,23 @@
   box-sizing: border-box;
 }
 
-/* ─── Header row (title + nav controls) ──────────────────────────────────── */
-.headerWrapper {
+/* ── Header row (title left + nav right) ──────────────────────────────────── */
+.headerRow {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  position: relative;
   margin-bottom: clamp(1rem, 2.5vh, 2rem);
 }
 
+/* ── Navigation controls ──────────────────────────────────────────────────── */
 .navControls {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  flex-shrink: 0;
 }
 
-.slideCounter {
+.counter {
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -55,9 +60,10 @@
   border: 1px solid var(--accent-interior-border);
   padding: 0.35rem 0.75rem;
   border-radius: 9999px;
+  white-space: nowrap;
 }
 
-.controlBtn {
+.navBtn {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -73,46 +79,59 @@
   transition: all var(--transition-fast);
 }
 
-.controlBtn:hover {
+.navBtn:hover {
   background: var(--color-text-primary);
   color: var(--color-bg-primary);
   border-color: var(--color-text-primary);
   transform: scale(1.05);
 }
 
-/* ─── Viewport clip ───────────────────────────────────────────────────────── */
-.galleryViewport {
+/* ── Track container: clips the horizontal overflow ───────────────────────── */
+.trackContainer {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
   width: 100%;
-  overflow: visible;
 }
 
-/* ─── Horizontal track — NO CSS transition, transform written by JS directly  */
-.horizontalTrack {
+/* ── Track: flex row of cards, translated horizontally ────────────────────── */
+.track {
   display: flex;
+  height: 100%;
   gap: 2rem;
   padding-left: max(var(--spacing-section-x), calc((100vw - var(--container-max-width)) / 2 + var(--spacing-section-x)));
   padding-right: max(var(--spacing-section-x), calc((100vw - var(--container-max-width)) / 2 + var(--spacing-section-x)));
   will-change: transform;
-  /* NO transition here — transform is driven 1:1 by scroll via rAF */
+  /* Smooth but snappy — not so slow that it feels laggy */
+  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ─── Project card ────────────────────────────────────────────────────────── */
-.projectCard {
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+.card {
   flex: 0 0 clamp(340px, 30vw, 440px);
-  height: clamp(380px, 54vh, 500px);
+  height: 100%;
   border-radius: var(--radius-xl);
   overflow: hidden;
   position: relative;
   background-color: var(--color-bg-secondary);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
-  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+  transition: transform var(--transition-smooth),
+              border-color var(--transition-smooth),
+              box-shadow var(--transition-smooth),
+              opacity var(--transition-smooth);
+  opacity: 0.65;
 }
 
-.projectCard:hover {
+.card.cardActive {
+  opacity: 1;
+}
+
+.card:hover {
   transform: translateY(-6px);
   border-color: rgba(255, 255, 255, 0.25);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+  opacity: 1;
 }
 
 .cardInner {
@@ -122,14 +141,14 @@
   overflow: hidden;
 }
 
-.projectImage {
+.cardImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.projectCard:hover .projectImage {
+.card:hover .cardImage {
   transform: scale(1.05);
 }
 
@@ -176,7 +195,7 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-.projectTitle {
+.cardTitle {
   font-size: clamp(1.25rem, 1.8vw, 1.65rem);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
@@ -191,22 +210,54 @@
   margin: 0;
 }
 
-/* ─── Scroll hint ─────────────────────────────────────────────────────────── */
+/* ── Scroll hint ──────────────────────────────────────────────────────────── */
 .scrollHint {
   text-align: center;
   font-size: var(--text-xs);
   color: rgba(255, 255, 255, 0.3);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-top: auto;
   padding: 0.5rem 0;
+  margin: 0;
+  flex-shrink: 0;
 }
 
-/* ─── Responsive ──────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   Reduced-motion: disable the sticky/scroll-jacking effect
+   Show cards as a normal scrollable row or vertical stack
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .outerWrapper {
+    height: auto !important;
+  }
+
+  .stickyViewport {
+    position: relative;
+    height: auto;
+  }
+
+  .trackContainer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .track {
+    transition: none;
+    transform: none !important;
+  }
+
+  .card {
+    opacity: 1;
+    height: clamp(380px, 54vh, 500px);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 820px) {
-  .projectCard {
+  .card {
     flex: 0 0 340px;
-    height: 420px;
   }
 
   .navControls {
@@ -215,15 +266,14 @@
 }
 
 @media (max-width: 480px) {
-  .horizontalTrack {
+  .track {
     gap: 1.25rem;
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-  .projectCard {
+  .card {
     flex: 0 0 85vw;
-    height: 380px;
     border-radius: var(--radius-lg);
   }
 
@@ -231,7 +281,7 @@
     padding: 1.25rem;
   }
 
-  .projectTitle {
+  .cardTitle {
     font-size: 1.25rem;
   }
 }
