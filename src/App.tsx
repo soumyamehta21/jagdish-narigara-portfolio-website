@@ -29,7 +29,7 @@ export const App: React.FC = () => {
         {/* Section 3: Interactive Design Process & Methodology */}
         <DesignProcess />
 
-        {/* Section 4: Specialized Services Grid (7 Core Services) */}
+        {/* Section 4: Specialized Services Grid (6 Core Services) */}
         <ServicesGrid />
 
         {/* Section 5: Interior Space Planning & Philosophy */}

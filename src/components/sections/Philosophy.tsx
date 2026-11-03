@@ -15,7 +15,7 @@ export const Philosophy: React.FC = () => {
           <div className={styles.imageCard}>
             <img
               src={getAssetUrl('images/project-5.jpg')}
-              alt="Bespoke luxury interior space planning and custom joinery design"
+              alt="Luxury interior space planning and custom joinery design"
               className={styles.showcaseImage}
               loading="lazy"
               width="900"
@@ -72,7 +72,7 @@ export const Philosophy: React.FC = () => {
               <div className={styles.pillarText}>
                 <h3 className={styles.pillarTitle}>Custom Millwork &amp; Detailing</h3>
                 <p className={styles.pillarDesc}>
-                  Millimeter-accurate wall elevations, bespoke wardrobe joinery, TV units, and material transitions.
+                  Millimeter-accurate wall elevations, custom wardrobe joinery, TV units, and material transitions.
                 </p>
               </div>
             </div>

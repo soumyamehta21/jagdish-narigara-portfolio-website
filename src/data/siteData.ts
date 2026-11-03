@@ -17,14 +17,14 @@ export const studioInfo: StudioInfo = {
   name: 'Jagdish Narigara',
   legalName: 'Jagdish Narigara Interior Design Studio',
   statusBadge: 'Open to Projects',
-  headline: 'Bespoke spaces designed with precision & timeless artistry.',
-  headlineSub: 'Transforming spaces into timeless, functional, and visually breathtaking interiors through precision space planning, technical drafting, and hyper-realistic 3D visualization.',
-  statementWords: ['BESPOKE', 'INTERIORS', 'YOU CHERISH'],
+  headline: 'Transforming Design Visions into Extraordinary Interior Experiences.',
+  headlineSub: 'Shaping spaces into timeless, functional, and visually breathtaking interiors through precision space planning, technical drafting, and hyper-realistic 3D visualization.',
+  statementWords: ['WE DESIGN', 'SPACES', 'PEOPLE LOVE'],
   philosophyTitle: 'Design Philosophy',
   philosophyBody: "As an independent interior designer and 3D visualizer, I believe exceptional living environments seamlessly balance functional ergonomics with visual elegance. Every space is approached with personal dedication — from initial spatial planning and millimeter-accurate drafting to photorealistic 3D visualization and lighting orchestration. I transform residential and commercial interiors into curated spaces tailored to reflect individual lifestyles and aspirations. I don't just furnish spaces — I choreograph environments that inspire and endure.",
   founderEyebrow: 'My Journey',
   founderHeading: 'From Classroom to Landmark Projects',
-  founderIntro: 'Jagdish Narigara is an independent interior designer and 3D visualizer based in Ahmedabad. Beginning his formal journey in 2022, he has rapidly built a strong practice delivering bespoke residences, luxury penthouses, hospitals, and commercial workspaces. Working independently allows him to provide undivided personal attention to every project, mastering both millimeter-accurate 2D technical drawings and photorealistic 3D visualization to ensure seamless execution on site.',
+  founderIntro: 'Jagdish Narigara is an independent interior designer and 3D visualizer based in Ahmedabad. Beginning his formal journey in 2022, he has rapidly built a strong practice delivering private residences, luxury penthouses, hospitals, and commercial workspaces. Working independently allows him to provide undivided personal attention to every project, mastering both millimeter-accurate 2D technical drawings and photorealistic 3D visualization to ensure seamless execution on site.',
   founderName: 'Jagdish Narigara',
   founderTitle: 'Independent Interior Designer & 3D Visualizer',
   quote: '"An interior is the natural projection of the soul. When space, light, and materiality converge in harmony, everyday living is elevated into an art form."',
@@ -112,8 +112,8 @@ export const processStepsData: ProcessStep[] = [
     phase: 'Phase 03',
     title: '3D Interior Modeling',
     summary: 'Building true-to-scale 3D digital environments with custom cabinetry and curated furniture.',
-    description: 'I construct exact 3D digital replicas of your spaces. Custom wardrobes, media consoles, false ceiling profiles, and bespoke furniture pieces are modeled in volumetric precision before textures are applied.',
-    deliverables: ['True-to-Scale 3D Wireframes', 'Bespoke Cabinetry & Joinery 3D', 'Spatial Proportions Review'],
+    description: 'I construct exact 3D digital replicas of your spaces. Custom wardrobes, media consoles, false ceiling profiles, and custom furniture pieces are modeled in volumetric precision before textures are applied.',
+    deliverables: ['True-to-Scale 3D Wireframes', 'Custom Cabinetry & Joinery 3D', 'Spatial Proportions Review'],
     benefit: 'Enables you to see depth, scale, and volume in three dimensions before finalizing finishes.',
     iconName: 'Box'
   },
@@ -168,8 +168,8 @@ export const servicesData: ServiceItem[] = [
     number: '05',
     title: '3D Interior Modeling',
     iconName: 'Box',
-    description: 'High-precision 3D digital massing, custom cabinetry detailing, bespoke furniture models, and custom interior millwork modeled to exact scale.',
-    deliverables: ['Bespoke Millwork Models', 'Custom Furniture 3D', 'Volumetric Space Realization']
+    description: 'High-precision 3D digital massing, custom cabinetry detailing, custom furniture models, and custom interior millwork modeled to exact scale.',
+    deliverables: ['Detailed Millwork Models', 'Custom Furniture 3D', 'Volumetric Space Realization']
   },
   {
     id: 'service-space-planning',
@@ -178,14 +178,6 @@ export const servicesData: ServiceItem[] = [
     iconName: 'LayoutGrid',
     description: 'Strategic spatial zoning, ergonomic circulation analysis, and functional furniture positioning to maximize comfort, utility, and visual elegance.',
     deliverables: ['Zoning Diagrams', 'Traffic Flow Optimization', 'Ergonomic Layouts']
-  },
-  {
-    id: 'service-elevations',
-    number: '07',
-    title: 'Interior Elevations',
-    iconName: 'Layers',
-    description: 'Detailed vertical wall elevations detailing TV units, wardrobe millwork, vanity designs, feature wall paneling, and material transitions.',
-    deliverables: ['Feature Wall Profiles', 'Wardrobe & Kitchen Millwork', 'Vertical Material Mapping']
   }
 ];
 
@@ -201,7 +193,7 @@ export const projectsData: ProjectItem[] = [
   {
     id: 'proj-2',
     title: 'Minimalist Executive Lounge',
-    category: 'Bespoke Lounge Interior',
+    category: 'Modern Executive Lounge',
     year: '2024',
     location: 'Hillside Reserve',
     imageSrc: getAssetUrl('images/project-2.jpg'),
@@ -251,7 +243,7 @@ export const milestonesData: MilestoneItem[] = [
     id: 'milestone-2',
     date: '2026',
     title: 'Bungalows & Large Residences',
-    description: 'Continues to deliver bespoke bungalows and residences with a focus on detail and finish.',
+    description: 'Continues to deliver private bungalows and residences with a focus on detail and finish.',
     tags: ['The Aviraat Bungalows', 'HaxSmapur', 'Shilp Residency', 'Celestial'],
   },
   {
@@ -302,7 +294,7 @@ export const awardsData: AwardItem[] = [
   {
     id: 'award-2',
     year: '2026',
-    category: 'Bespoke Residential Architecture',
+    category: 'Private Residential Architecture',
     title: 'Excellence in Luxury Bungalow Spatial Design',
     project: 'The Aviraat Bungalows, Hastinapur & Shilp Residency',
     description: 'Honored for tailored millwork detailing, expansive spatial flow, and harmonized interior materiality.'
@@ -313,7 +305,7 @@ export const awardsData: AwardItem[] = [
     category: 'High-Rise & Penthouse Living',
     title: 'Penthouse 3D Visualization & Interior Feature',
     project: 'Times 104, Shallgram Penthouse & Skyros',
-    description: 'Celebrated for ray-traced lighting realism, high-altitude spatial framing, and bespoke living room compositions.'
+    description: 'Celebrated for ray-traced lighting realism, high-altitude spatial framing, and modern living room compositions.'
   },
   {
     id: 'award-4',

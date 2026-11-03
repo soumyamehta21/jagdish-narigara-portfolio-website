@@ -34,8 +34,8 @@ export const Hero: React.FC = () => {
         <div className={styles.heroContent}>
           <div className={styles.headlineCol}>
             <h1 className={styles.headline}>
-              Blending spatial art &amp; technical <br className={styles.desktopBr} />
-              precision to shape extraordinary interiors.
+              Transforming Design Visions into <br className={styles.desktopBr} />
+              Extraordinary Interior Experiences.
             </h1>
           </div>
 

@@ -88,7 +88,7 @@ export const ProjectsGallery: React.FC = () => {
           <SectionHeader
             eyebrow="Portfolio Showcase"
             heading={<>The Proof is in <br />The Portfolio</>}
-            description="Explore a curated portfolio of bespoke interior transformations, custom living environments, and photorealistic 3D visualizations."
+            description="Explore a curated portfolio of interior transformations, custom living environments, and photorealistic 3D visualizations."
             layout="split"
           />
 

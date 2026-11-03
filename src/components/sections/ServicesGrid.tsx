@@ -19,7 +19,7 @@ export const ServicesGrid: React.FC = () => {
         {/* Separator Line */}
         <div className={styles.divider} />
 
-        {/* Grid of 7 Cards */}
+        {/* Grid of 6 Specialized Services */}
         <div className={styles.cardsGrid}>
           {servicesData.map((service) => (
             <ServiceCard key={service.id} service={service} />
