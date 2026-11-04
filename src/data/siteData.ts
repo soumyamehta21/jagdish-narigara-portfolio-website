@@ -132,52 +132,52 @@ export const processStepsData: ProcessStep[] = [
 
 export const servicesData: ServiceItem[] = [
   {
-    id: 'service-drafting',
+    id: 'service-space-planning',
     number: '01',
-    title: '2D Drafting & Drawings',
+    title: 'Space Planning',
+    iconName: 'LayoutGrid',
+    description: 'Strategic spatial zoning, ergonomic circulation analysis, and functional furniture positioning to maximize comfort, utility, and visual elegance.',
+    deliverables: ['Zoning Diagrams', 'Traffic Flow Optimization', 'Ergonomic Layouts']
+  },
+  {
+    id: 'service-drafting',
+    number: '02',
+    title: '2D Drafting Drawings',
     iconName: 'PenTool',
     description: 'Comprehensive dimensioned CAD floor plans, structural partition layouts, furniture arrangements, and construction-ready technical drawing packages.',
     deliverables: ['Detailed CAD Layouts', 'Partition & Demolition Plans', 'Full Dimension Sets']
   },
   {
-    id: 'service-ceiling-lighting',
-    number: '02',
-    title: 'Ceiling & Lighting Plans',
-    iconName: 'Lightbulb',
-    description: 'Reflected ceiling plans (RCP), lighting fixture schedules, cove lighting detailing, electrical switch layouts, and circadian ambience engineering.',
-    deliverables: ['Reflected Ceiling Plans (RCP)', 'Fixture Schedules', 'Circadian Lighting Design']
-  },
-  {
-    id: 'service-rendering',
-    number: '03',
-    title: 'Photorealistic Rendering',
-    iconName: 'Sparkles',
-    description: 'High-fidelity 4K photorealistic renderings capturing authentic natural daylight, tactile fabric textures, marble veining, and luxury material reflections.',
-    deliverables: ['4K Ultra-HD Stills', 'Natural Light & Dusk Studies', 'Tactile Material Textures']
-  },
-  {
-    id: 'service-walkthroughs',
-    number: '04',
-    title: '3D Walkthroughs',
-    iconName: 'Video',
-    description: 'Cinematic animated camera walkthroughs and 360° virtual tours that offer an immersive, true-to-scale journey through your future interior spaces.',
-    deliverables: ['Cinematic Video Tours', '360° Panoramic Views', 'Spatial Transition Previews']
-  },
-  {
     id: 'service-modeling',
-    number: '05',
+    number: '03',
     title: '3D Interior Modeling',
     iconName: 'Box',
     description: 'High-precision 3D digital massing, custom cabinetry detailing, custom furniture models, and custom interior millwork modeled to exact scale.',
     deliverables: ['Detailed Millwork Models', 'Custom Furniture 3D', 'Volumetric Space Realization']
   },
   {
-    id: 'service-space-planning',
+    id: 'service-rendering',
+    number: '04',
+    title: 'Photo Realistic Rendering',
+    iconName: 'Sparkles',
+    description: 'High-fidelity 4K photorealistic renderings capturing authentic natural daylight, tactile fabric textures, marble veining, and luxury material reflections.',
+    deliverables: ['4K Ultra-HD Stills', 'Natural Light & Dusk Studies', 'Tactile Material Textures']
+  },
+  {
+    id: 'service-walkthroughs',
+    number: '05',
+    title: '3D Walkthrough',
+    iconName: 'Video',
+    description: 'Cinematic animated camera walkthroughs and 360° virtual tours that offer an immersive, true-to-scale journey through your future interior spaces.',
+    deliverables: ['Cinematic Video Tours', '360° Panoramic Views', 'Spatial Transition Previews']
+  },
+  {
+    id: 'service-ceiling-electrical',
     number: '06',
-    title: 'Space Planning',
-    iconName: 'LayoutGrid',
-    description: 'Strategic spatial zoning, ergonomic circulation analysis, and functional furniture positioning to maximize comfort, utility, and visual elegance.',
-    deliverables: ['Zoning Diagrams', 'Traffic Flow Optimization', 'Ergonomic Layouts']
+    title: 'Ceiling and Electrical Drawings',
+    iconName: 'Lightbulb',
+    description: 'Reflected ceiling plans (RCP), lighting fixture schedules, cove lighting detailing, electrical switch layouts, and circadian ambience engineering.',
+    deliverables: ['Reflected Ceiling Plans (RCP)', 'Electrical Switch Layouts', 'Lighting Fixture Schedules']
   }
 ];
 
