@@ -7,17 +7,20 @@ import styles from './Hero.module.css';
 export const Hero: React.FC = () => {
   return (
     <section id="home" className={styles.heroSection} aria-label="Hero Introduction">
-      {/* Background Interior Atmosphere */}
+      {/* Background Interior Atmosphere Video */}
       <div className={styles.mediaBackground}>
-        <img
-          src={getAssetUrl('images/hero.jpg')}
-          alt="Atmospheric modern luxury interior space at dusk"
-          className={styles.heroImage}
-          loading="eager"
-          fetchPriority="high"
-          width="1920"
-          height="1080"
-        />
+        <video
+          className={styles.heroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster={getAssetUrl('images/hero.jpg')}
+          aria-hidden="true"
+        >
+          <source src={getAssetUrl('videos/hero-bg.mp4')} type="video/mp4" />
+        </video>
         <div className={styles.overlay} />
       </div>
 
