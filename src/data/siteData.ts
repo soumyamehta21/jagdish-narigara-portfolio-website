@@ -34,10 +34,10 @@ export const studioInfo: StudioInfo = {
   teamEyebrow: 'Recognition & Distinctions',
   teamHeading: 'Project Citations & Industry Honors',
   teamSubtext: 'A documented track record of precision, technical excellence, and trusted delivery across high-end residences, healthcare, and commercial spaces.',
-  phone: '+91 87006 55257',
+  phone: '+91 97387 55555',
   email: 'contact@jagdishnarigara.com',
   address: 'Main Avenue, Design District, New Delhi, India',
-  whatsappUrl: 'https://wa.me/+918700655257',
+  whatsappUrl: 'https://wa.me/919738755555',
   marqueeWords: ['Plan', 'Draft', 'Model', 'Visualize', 'Transform'],
   copyright: '© 2026 Jagdish Narigara. All Rights Reserved.',
   developerCredit: 'Crafted with interior precision'

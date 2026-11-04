@@ -18,13 +18,13 @@ const projectMetadata = {
     category: 'Contemporary Living Interior',
     tagline: 'Fluted timber paneling and marble console illuminated by warm perimeter glow.',
     imageDescriptions: [
-      'Living lounge TV feature wall with custom curved vitrines and low marble console',
+      'Living lounge TV feature wall with custom curved fabric shelf',
       'Living and dining transition framed by arched glass partition and marble dining table',
       'Dining area showcasing six upholstered sculptural chairs and white marble table',
       'Close-up detail of illuminated curved display vitrine with decorative art ceramics',
       'Full wide-angle view of living space highlighting coved ceiling and ambient strip lighting',
       'Sectional sofa perspective facing the wood-paneled entertainment feature wall',
-      'Arched entry view from living area toward dining salon and kitchen corridor',
+      'Invisible Bedroom Door with Contemporary Wave Pattern Panel Design',
     ],
   },
   '02': {
@@ -36,7 +36,7 @@ const projectMetadata = {
       'Wide perspective featuring wireframe ribbon chandelier and open-plan kitchen counter',
       'Intimate lounge seating zone with deep forest-green armchairs and marble coffee tables',
       'Kitchen bar transition highlighting backlit glass cabinets and marble waterfall counter',
-      'Corridor perspective showing floor-to-ceiling fluted wood panels and brass reveals',
+      'Corridor View Featuring Fluted Wood Paneling and Concealed Bedroom Entrance',
     ],
   },
   '03': {
@@ -65,7 +65,7 @@ const projectMetadata = {
     category: 'Luxury Bedroom Interior',
     tagline: 'Curved backlit headboard alcove set against deep charcoal fluted woodwork.',
     imageDescriptions: [
-      'Front elevation of curved backlit headboard alcove with teardrop glass pendants',
+      'Open-pore smoked walnut PU veneer combined with bronze or antique-tinted metal strips',
       'Perspective with end-of-bed bench seat, burnt-orange throw, and fluted paneling',
       'Angle toward floor-to-ceiling sheer drapery and polished marble floor reflections',
       'Bedside detail showing fluted timber paneling and rounded marble nightstand',
@@ -254,8 +254,8 @@ import { getAssetUrl } from '../utils/assetUrl';
 
 export const portfolioProjects: ProjectItem[] = [
 ${projectsData
-  .map(
-    (p) => `  {
+      .map(
+        (p) => `  {
     id: '${p.id}',
     slug: '${p.slug}',
     title: ${JSON.stringify(p.title)},
@@ -268,8 +268,8 @@ ${projectsData
     imageSrc: getAssetUrl('${p.imageSrc}'),
     images: [
 ${p.images
-  .map(
-    (img) => `      {
+            .map(
+              (img) => `      {
         src: getAssetUrl('${img.src}'),
         thumbSrc: getAssetUrl('${img.thumbSrc}'),
         width: ${img.width},
@@ -277,12 +277,12 @@ ${p.images
         alt: ${JSON.stringify(img.alt)},
         caption: ${JSON.stringify(img.caption)},
       },`
-  )
-  .join('\n')}
+            )
+            .join('\n')}
     ],
   },`
-  )
-  .join('\n')}
+      )
+      .join('\n')}
 ];
 `;
 
